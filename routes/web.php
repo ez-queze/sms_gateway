@@ -52,5 +52,6 @@ Route::middleware(['auth'])->group(function () {
 		Route::get('/informasi/{nis}', [BkController::class, 'get_info']);
 		Route::get('/informasi/{nis}', [KpController::class, 'get_info']);
 		Route::get('/informasi/hapus/{id}', [KpController::class, 'hapus_detail']);
+		Route::post('/kirim', [BkController::class, 'kirim_sms'])->name('kirim_sms');
     	});
 });

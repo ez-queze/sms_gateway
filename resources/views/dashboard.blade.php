@@ -380,24 +380,26 @@
                 <div class="z-50 cursor-pointer modal-close" onclick="modalClose('pelanggaran-sms')">
                 </div>
             </div>
+		  <form action="{{ route('dashboard.kirim_sms') }}" method="post">
+		  @csrf
             <div class="block">
                 <span class="block px-0 pt-1 pb-2 mt-0 w-full text-gray-700 bg-transparent border-0 border-b-2 border-green-200 appearance-none focus:outline-none focus:ring-0 focus:border-black">Poin Pelanggaran Siswa</span>
                 <div class="mt-2">
                     <div>
                         <label class="inline-flex items-center">
-                            <input type="checkbox" class="form-checkbox" name="checkbox" value="3"checked>
+                            <input type="checkbox" class="form-checkbox" name="pilih1" value="1">
                             <span class="ml-2">Poin 25 - 49</span>
                         </label>
                     </div>
                     <div>
                         <label class="inline-flex items-center">
-                            <input type="checkbox" class="form-checkbox" name="checkbox" value="3">
+                            <input type="checkbox" class="form-checkbox" name="pilih2" value="1">
                             <span class="ml-2">Poin 50 - 69</span>
                         </label>
                     </div>
                     <div>
                         <label class="inline-flex items-center">
-                            <input type="checkbox" class="form-checkbox" name="checkbox" value="3">
+                            <input type="checkbox" class="form-checkbox" name="pilih3" value="1">
                             <span class="ml-2">Poin 70 - 79</span>
                         </label>
                     </div>
@@ -408,13 +410,14 @@
             <span class="block px-0 pt-1 pb-2 mt-0 w-full text-gray-700 bg-transparent border-0 border-b-2 border-green-200 appearance-none focus:outline-none focus:ring-0 focus:border-black"><span style="color:red">*</span>Mohon perhatikan poin pelanggaran siswa sebelum mengirimkan teguran.</span>
             <!--Footer-->
             <div class="flex justify-end pt-2 space-x-4">
-                <button class="p-1 m-2 w-20 font-semibold text-white bg-red-400 rounded-full shadow-lg transition-all duration-300 hover:bg-red-600 focus:outline-none focus:ring hover:shadow-none" onclick="modalClose('pelanggaran-sms')">
+                <button type="button" class="p-1 m-2 w-20 font-semibold text-white bg-red-400 rounded-full shadow-lg transition-all duration-300 hover:bg-red-600 focus:outline-none focus:ring hover:shadow-none" onclick="modalClose('pelanggaran-sms')">
                     Batal
                 </button>
-                <button class="p-1 m-2 w-20 font-semibold text-white bg-green-400 rounded-full shadow-lg transition-all duration-300 hover:bg-green-600 focus:outline-none focus:ring hover:shadow-none" onclick="validate_form(document.getElementById('add_caretaker_form'))">
+                <button type="submit" class="p-1 m-2 w-20 font-semibold text-white bg-green-400 rounded-full shadow-lg transition-all duration-300 hover:bg-green-600 focus:outline-none focus:ring hover:shadow-none" onclick="validate_form(document.getElementById('add_caretaker_form'))">
                     Kirim
                 </button>
             </div>
+		  </form>
         </div>
     </div>
 </div>
@@ -558,62 +561,45 @@
                         <thead>
                             <tr class="text-sm font-medium text-left text-gray-700 rounded-lg" style="font-size: 0.9674rem">
                                 <th class="px-4 py-2 bg-gray-200" style="background-color:#f8f8f8">No</th>
-                                <th class="px-4 py-2" style="background-color:#f8f8f8">Tanggal</th>
                                 <th class="px-4 py-2" style="background-color:#f8f8f8">NIS</th>
                                 <th class="px-4 py-2" style="background-color:#f8f8f8">Nama Siswa</th>
                                 <th class="px-4 py-2" style="background-color:#f8f8f8">Kelas</th>
                                 <th class="px-4 py-2" style="background-color:#f8f8f8">Angkatan</th>
-                                <th class="px-4 py-2" style="background-color:#f8f8f8">Poin</th>
+                                <th class="px-4 py-2" style="background-color:#f8f8f8">Total Poin</th>
+						  <th class="px-4 py-2" style="background-color:#f8f8f8">Tanggal</th>
                                 <th class="px-4 py-2" style="background-color:#f8f8f8">Opsi</th>
                             </tr>
                         </thead>
                         <tbody class="text-sm font-normal text-gray-700">
+					   @if (count($pelanggarans) > 0)
+ 					   @foreach ($pelanggarans as $item)
                             <tr class="py-10 border-b border-gray-200 hover:bg-gray-100">
-                                <td class="px-4 py-4">1</td>
-                                <td class="px-4 py-4">9/7/2021</td>
-                                <td class="px-4 py-4">884001</td>
-                                <td class="px-4 py-4">Ajie</td>
-                                <td class="px-4 py-4">X IPA</td>
-                                <td class="px-4 py-4">2017</td>
-                                <td class="px-4 py-4">20</td>
+                                <td class="px-4 py-4">{{ $loop->iteration }}</td>
+                                <td class="px-4 py-4">{{ $item->nis }}</td>
+                                <td class="px-4 py-4">{{ $item->nama_siswa }}</td>
+                                <td class="px-4 py-4">{{ $item->kelas }}</td>
+                                <td class="px-4 py-4">{{ $item->angkatan }}</td>
+                                <td class="px-4 py-4">{{ $item->total_poin }}</td>
+						  <td class="px-4 py-4">{{ $item->updated_at }}</td>
                                 <td class="px-4 py-4">
                                 <div class="space-y-10 md:space-x-2 md:space-y-0">
-                                    <button
-                                    class="p-1 m-2 w-20 font-semibold text-white bg-green-400 rounded-full shadow-lg transition-all duration-300 hover:bg-green-600 focus:outline-none focus:ring hover:shadow-none"
-                                    @click="showModal3 = true"> Info </button>
+							 <a href="/dashboard/informasi/{{ $item->nis }}">
+                                    	<button type="button" class="p-1 m-2 w-20 font-semibold text-white bg-green-400 rounded-full shadow-lg transition-all duration-300 hover:bg-green-600 focus:outline-none focus:ring hover:shadow-none"> Info </button>
+						 	 </a>
                                 </div>
                                 </td>
-
-
                             </tr>
-                            <tr class="py-4 border-b border-gray-200 hover:bg-gray-100">
-                                <td class="flex items-center px-4 py-4">2</td>
-                                <td class="px-4 py-4"></td>
-                                <td class="px-4 py-4">884002</td>
-                                <td class="px-4 py-4">Kresna</td>
-                            </tr>
-                            <tr class="border-gray-200 hover:bg-gray-100">
-                                <td class="px-4 py-4">3</td>
-                                <td class="px-4 py-4"></td>
-                                <td class="px-4 py-4">884003</td>
-                                <td class="px-4 py-4">Dimas</td>
-                            </tr>
+					   @endforeach
+					   @else
+						   <tr class="py-10 border-b border-gray-200 hover:bg-gray-100">
+							  <td colspan="11" class="px-4 py-4 text-center">Data Pelanggaran Kosong!</td>
+						   </tr>
+					   @endif
                         </tbody>
                     </table>
                 </div>
                 <div id="pagination" class="flex justify-center items-center pt-4 w-full border-t border-gray-100">
-                    <svg class="w-6 h-6" width="24" height="24" viewBox="0 0 24 24"     fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <g opacity="0.4">
-                            <path fill-rule="evenodd" clip-rule="evenodd" d="M9 12C9 12.2652 9.10536 12.5196 9.29289 12.7071L13.2929 16.7072C13.6834 17.0977 14.3166 17.0977 14.7071 16.7072C15.0977 16.3167 15.0977 15.6835 14.7071 15.293L11.4142 12L14.7071 8.70712C15.0977 8.31659 15.0977 7.68343 14.7071 7.29289C14.3166 6.90237 13.6834 6.90237 13.2929 7.29289L9.29289 11.2929C9.10536 11.4804 9 11.7348 9 12Z" fill="#2C2C2C"/>
-                        </g>
-                    </svg>
-                    <p class="mx-2 text-sm leading-relaxed text-blue-600 cursor-pointer hover:text-blue-600">1</p>
-                    <p class="mx-2 text-sm leading-relaxed cursor-pointer hover:text-blue-600" >2</p>
-                    <p class="mx-2 text-sm leading-relaxed cursor-pointer hover:text-blue-600"> 3 </p>
-                    <p class="mx-2 text-sm leading-relaxed cursor-pointer hover:text-blue-600"> 4 </p>
-                    <svg class="w-6 h-6" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" clip-rule="evenodd" d="M15 12C15 11.7348 14.8946 11.4804 14.7071 11.2929L10.7071 7.2929C10.3166 6.9024 9.6834 6.9024 9.2929 7.2929C8.9024 7.6834 8.9024 8.3166 9.2929 8.7071L12.5858 12L9.2929 15.2929C8.9024 15.6834 8.9024 16.3166 9.2929 16.7071C9.6834 17.0976 10.3166 17.0976 10.7071 16.7071L14.7071 12.7071C14.8946 12.5196 15 12.2652 15 12Z" fill="#18A0FB"/>
-                    </svg>
+                    {{ $pelanggarans->onEachSide(5)->links() }}
                 </div>
             </div>
             <style>
