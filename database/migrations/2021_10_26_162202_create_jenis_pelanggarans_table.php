@@ -14,7 +14,7 @@ class CreateJenisPelanggaransTable extends Migration
     public function up()
     {
         Schema::create('jenis_pelanggarans', function (Blueprint $table) {
-            $table->string('kode_pelanggaran')->primary();
+            $table->id();
             $table->string('nama_pelanggaran');
             $table->integer('poin');
             $table->string('kategori');

@@ -16,34 +16,26 @@
                 </div>
             </div>
             <!--Body-->
+		  <form action="{{ route('dashboard.tambah.pelanggaran') }}" method="post">
+		  @csrf
+		  <input type="hidden" name="nis" value="{{ $siswa->nis }}">
+		  <input type="hidden" name="nama_siswa" value="{{ $siswa->nama_siswa }}">
+		  <input type="hidden" name="kelas" value="{{ $siswa->kelas }}">
+		  @for ($i=0; $i < count($kategori); $i++)
+			<input type="hidden" name="kategori-{{ $i }}" value="{{ $kategori[$i] }}">
+		  @endfor
             <div class="grid grid-cols-1 mx-3 mt-2">
                 <div class="block">
                     <span class="block px-0 pt-1 pb-2 mt-0 w-full text-gray-700 bg-transparent border-0 border-b-2 border-green-200 appearance-none focus:outline-none focus:ring-0 focus:border-black">Berpakaian</span>
                     <div class="mt-2">
-                        <div>
-                            <label class="inline-flex items-center">
-                                <input type="checkbox" class="form-checkbox" name="checkbox" value="3"checked>
-                                <span class="ml-2">Tidak memasukan baju</span>
-                            </label>
-                        </div>
-                        <div>
-                            <label class="inline-flex items-center">
-                                <input type="checkbox" class="form-checkbox" name="checkbox" value="3">
-                                <span class="ml-2">Tidak memakai kaos</span>
-                            </label>
-                        </div>
-                        <div>
-                            <label class="inline-flex items-center">
-                                <input type="checkbox" class="form-checkbox" name="checkbox" value="3">
-                                <span class="ml-2">Tidak memakai tali pinggang</span>
-                            </label>
-                        </div>
-                        <div>
-                            <label class="inline-flex items-center">
-                                <input type="checkbox" class="form-checkbox" name="checkbox" value="3">
-                                <span class="ml-2">Rambut panjang tergerai (siswa putri/putra)</span>
-                            </label>
-                        </div>
+					@foreach ($berpakaian as $item)
+				    	<div>
+						<label class="inline-flex items-center">
+							<input type="checkbox" class="form-checkbox" name="berpakaian-{{ $loop->index }}" value="{{ $item->nama_pelanggaran }}">
+							<span class="ml-2">{{ $item->nama_pelanggaran }}</span>
+						</label>
+                        	</div>
+				    	@endforeach
                     </div>
                 </div>
             </div>
@@ -51,30 +43,14 @@
                 <div class="block">
                     <span class="block px-0 pt-1 pb-2 mt-0 w-full text-gray-700 bg-transparent border-0 border-b-2 border-green-200 appearance-none focus:outline-none focus:ring-0 focus:border-black">Belajar</span>
                     <div class="mt-2">
-                        <div>
+					@foreach ($belajar as $item)
+                         <div>
                             <label class="inline-flex items-center">
-                                <input type="checkbox" class="form-checkbox" name="checkbox" value="3"checked>
-                                <span class="ml-2">Datang terlambat lebih dari 10 menit</span>
+                                <input type="checkbox" class="form-checkbox" name="belajar-{{ $loop->index }}" value="{{ $item->nama_pelanggaran }}">
+                                <span class="ml-2">{{ $item->nama_pelanggaran }}</span>
                             </label>
-                        </div>
-                        <div>
-                            <label class="inline-flex items-center">
-                                <input type="checkbox" class="form-checkbox" name="checkbox" value="3">
-                                <span class="ml-2">Tidak membawa buku sesuai jadwal</span>
-                            </label>
-                        </div>
-                        <div>
-                            <label class="inline-flex items-center">
-                                <input type="checkbox" class="form-checkbox" name="checkbox" value="3">
-                                <span class="ml-2">Merokok di sekolah</span>
-                            </label>
-                        </div>
-                        <div>
-                            <label class="inline-flex items-center">
-                                <input type="checkbox" class="form-checkbox" name="checkbox" value="3">
-                                <span class="ml-2">Tidak mengerjakan tugas PR</span>
-                            </label>
-                        </div>
+                         </div>
+					@endforeach
                     </div>
                 </div>
             </div>
@@ -82,42 +58,29 @@
                 <div class="block">
                     <span class="block px-0 pt-1 pb-2 mt-0 w-full text-gray-700 bg-transparent border-0 border-b-2 border-green-200 appearance-none focus:outline-none focus:ring-0 focus:border-black">Sikap / Norma</span>
                     <div class="mt-2">
-                        <div>
+					@foreach ($sikap as $item)
+                         <div>
                             <label class="inline-flex items-center">
-                                <input type="checkbox" class="form-checkbox" name="checkbox" value="3"checked>
-                                <span class="ml-2">Pelecehan Seksual</span>
+                                <input type="checkbox" class="form-checkbox" name="sikap-{{ $loop->index }}" value="{{ $item->nama_pelanggaran }}">
+                                <span class="ml-2">{{ $item->nama_pelanggaran }}</span>
                             </label>
-                        </div>
-                        <div>
-                            <label class="inline-flex items-center">
-                                <input type="checkbox" class="form-checkbox" name="checkbox" value="3">
-                                <span class="ml-2">Bertindak tidak sopan</span>
-                            </label>
-                        </div>
-                        <div>
-                            <label class="inline-flex items-center">
-                                <input type="checkbox" class="form-checkbox" name="checkbox" value="3">
-                                <span class="ml-2">Merusak fasilitas sekolah</span>
-                            </label>
-                        </div>
-                        <div>
-                            <label class="inline-flex items-center">
-                                <input type="checkbox" class="form-checkbox" name="checkbox" value="3">
-                                <span class="ml-2">Membawa benda tajam</span>
-                            </label>
-                        </div>
+                         </div>
+					@endforeach
                     </div>
                 </div>
             </div>
             <!--Footer-->
             <div class="flex justify-end pt-2 space-x-4">
-                <button class="p-1 m-2 w-20 font-semibold text-white bg-red-400 rounded-full shadow-lg transition-all duration-300 hover:bg-red-600 focus:outline-none focus:ring hover:shadow-none" onclick="modalClose('pelanggaran-tambah')">
-                    Batal
-                </button>
-                <button class="p-1 m-2 w-20 font-semibold text-white bg-green-400 rounded-full shadow-lg transition-all duration-300 hover:bg-green-600 focus:outline-none focus:ring hover:shadow-none" onclick="validate_form(document.getElementById('add_caretaker_form'))">
+			<a href="{{ route('dashboard') }}">
+				<button type="button" class="p-1 m-2 w-20 font-semibold text-white bg-red-400 rounded-full shadow-lg transition-all duration-300 hover:bg-red-600 focus:outline-none focus:ring hover:shadow-none" onclick="modalClose('pelanggaran-tambah')">
+					Batal
+				</button>
+		 	</a>
+                <button type="submit" class="p-1 m-2 w-20 font-semibold text-white bg-green-400 rounded-full shadow-lg transition-all duration-300 hover:bg-green-600 focus:outline-none focus:ring hover:shadow-none" onclick="validate_form(document.getElementById('add_caretaker_form'))">
                     Simpan
                 </button>
             </div>
+		  </form>
         </div>
     </div>
 </div>

@@ -14,17 +14,14 @@ class CreateDetailPelanggaransTable extends Migration
     public function up()
     {
         Schema::create('detail_pelanggarans', function (Blueprint $table) {
-            $table->integer('nis')->index();
+		  $table->id();
+		  $table->integer('nis')->index();
             $table->foreign('nis')->references('nis')->on('siswas')->onDelete('cascade');
             $table->string('nama_siswa');
             $table->string('kelas');
-            $table->string('angkatan');
-            $table->string('semester');
-            $table->string('kode_pelanggaran')->index();
-            $table->foreign('kode_pelanggaran')->references('kode_pelanggaran')->on('jenis_pelanggarans')->onDelete('cascade');
+            $table->string('kategori');
             $table->string('nama_pelanggaran');
             $table->integer('poin');
-            $table->date('tanggal');
             $table->timestamps();
         });
     }

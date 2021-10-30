@@ -8,14 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class DetailPelanggaran extends Model
 {
     use HasFactory;
-    
+
     protected $fillable = [
         'nis',
         'nama_siswa',
         'kelas',
-        'angkatan',
-        'semester',
-        'kode_pelanggaran',
+        'kategori',
         'nama_pelanggaran',
         'poin',
         'tanggal',

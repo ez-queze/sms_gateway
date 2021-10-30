@@ -15,48 +15,42 @@ use App\Http\Controllers\KpController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+require __DIR__.'/auth.php';
 
 Route::middleware(['guest'])->group(function () {
-    Route::get('/', function () {
-        return view('welcome');
-    })->name('welcome');
+	Route::get('/', function () {
+		return view('welcome');
+	})->name('welcome');
 
-    Route::get('/visi', function () {
-        return view('visi');
-    })->name('visi');
+	Route::get('/visi', function () {
+		return view('visi');
+	})->name('visi');
 
-    Route::get('/organisasi', function () {
-        return view('organisasi');
-    })->name('organisasi');
+	Route::get('/organisasi', function () {
+		return view('organisasi');
+	})->name('organisasi');
 });
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/dashboard', [Controller::class, 'dashboard'])->name('dashboard');
+    	Route::get('/dashboard', [Controller::class, 'dashboard'])->name('dashboard');
 
-    Route::prefix('dashboard')->name('dashboard.')->group(function() {
-        Route::prefix('tambah')->name('tambah.')->group(function() {
-            Route::post('/siswa', [BkController::class, 'tambah_siswa'])->name('siswa');
-            Route::post('/pelanggaran', [BkController::class, 'tambah_pelanggaran'])->name('pelanggaran');
-        });
+	Route::prefix('dashboard')->name('dashboard.')->group(function() {
+		Route::prefix('tambah')->name('tambah.')->group(function() {
+			Route::post('/siswa', [BkController::class, 'tambah_siswa'])->name('siswa');
+			Route::get('/pelanggaran/{nis}', [BkController::class, 'get_pelanggaran']);
+			Route::post('/pelanggaran', [BkController::class, 'tambah_pelanggaran'])->name('pelanggaran');
+			Route::post('/jenis_pelanggaran', [BkController::class, 'tambah_jenis_pelanggaran'])->name('jenis_pelanggaran');
+		});
 
-        Route::prefix('ubah')->name('ubah.')->group(function() {
-            Route::post('/siswa', [BkController::class, 'ubah_siswa'])->name('siswa');
-        });
+		Route::prefix('ubah')->name('ubah.')->group(function() {
+			Route::get('/siswa/{nis}', [BkController::class, 'get_siswa']);
+			Route::post('/siswa', [BkController::class, 'ubah_siswa'])->name('siswa');
+			Route::get('/jenis_pelanggaran/{id}', [BkController::class, 'get_jenis_pelanggaran']);
+			Route::post('/jenis_pelanggaran', [BkController::class, 'ubah_jenis_pelanggaran'])->name('jenis_pelanggaran');
+		});
 
-        Route::get('/personal', [KpController::class, 'personal'])->name('personal');
-
-        Route::get('/ubah_siswa', function () {
-            return view('ubah_siswa');
-        })->name('ubah_siswa');
-
-        Route::get('/tambah_pelanggaran', function () {
-            return view('tambah_pelanggaran');
-        })->name('tambah_pelanggaran');
-
-        Route::get('/ubah_jenis_pelanggaran', function () {
-            return view('ubah_jenis_pelanggaran');
-        })->name('ubah_jenis_pelanggaran');
-    });
+		Route::get('/informasi/{nis}', [BkController::class, 'get_info']);
+		Route::get('/informasi/{nis}', [KpController::class, 'get_info']);
+		Route::get('/informasi/hapus/{id}', [KpController::class, 'hapus_detail']);
+    	});
 });
-
-require __DIR__.'/auth.php';
