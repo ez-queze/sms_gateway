@@ -4,7 +4,7 @@
         <div class="flex justify-between h-18">
             <div class="flex">
                 <!-- Logo -->
-                <div class="flex flex-shrink-0 items-center">
+                <div class="flex items-center flex-shrink-0">
                     <a href="{{ route('welcome') }}">
                         <img style="-webkit-filter: drop-shadow(0px 0px 1px #222222); filter: drop-shadow(0px 0px 1px #222222);" src="{{ asset('img/logo.png') }}" width="75vw" alt="logo">
                     </a>
@@ -27,9 +27,9 @@
                 <a href="{{ route('login') }}" class="flex items-center mr-3 text-sm font-medium text-gray-500 transition duration-150 ease-in-out hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300">
                     <div>Login</div>
                 </a>
-                <a href="{{ route('register') }}" class="flex items-center text-sm font-medium text-gray-500 transition duration-150 ease-in-out hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300">
+                {{-- <a href="{{ route('register') }}" class="flex items-center text-sm font-medium text-gray-500 transition duration-150 ease-in-out hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300">
                     <div>Register</div>
-                </a>
+                </a> --}}
             </div>
         </div>
     </div>

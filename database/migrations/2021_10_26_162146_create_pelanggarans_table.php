@@ -18,7 +18,6 @@ class CreatePelanggaransTable extends Migration
             $table->foreign('nis')->references('nis')->on('siswas')->onDelete('cascade');
             $table->string('nama_siswa');
             $table->integer('total_poin');
-		  $table->date('tgl_pelanggaran');
             $table->timestamps();
         });
     }
