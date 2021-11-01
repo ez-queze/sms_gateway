@@ -167,10 +167,9 @@ class BkController extends Controller
 	public function tambah_Jenis_pelanggaran(Request $req)
 	{
 		$jenis_pelanggaran = JenisPelanggaran::create([
-  		   'kode_pelanggaran' => $req->kode_pelanggaran,
-  		   'nama_pelanggaran' => $req->nama_pelanggaran,
-  		   'kategori' => $req->kategori,
-  		   'poin' => $req->poin,
+  		    'kategori' => $req->kategori,
+            'nama_pelanggaran' => $req->nama_pelanggaran,
+  		    'poin' => $req->poin,
   	   	]);
 
 		return redirect()->back()->with('status', 'Data Jenis Pelanggaran Berhasil Ditambahkan!');
@@ -179,9 +178,9 @@ class BkController extends Controller
 	public function ubah_Jenis_pelanggaran(Request $req)
 	{
 		$jenis_pelanggaran = JenisPelanggaran::where('id', $req->id)->update([
-  		   'nama_pelanggaran' => $req->nama_pelanggaran,
-  		   'kategori' => $req->kategori,
-  		   'poin' => $req->poin,
+  		    'kategori' => $req->kategori,
+            'nama_pelanggaran' => $req->nama_pelanggaran,
+  		    'poin' => $req->poin,
   	   	]);
 
 		return redirect()->route('dashboard')->with('status', 'Data Jenis Pelanggaran Berhasil Diubah!');
@@ -197,113 +196,277 @@ class BkController extends Controller
 				->where('total_poin', '<=', 49)
 				->get('nis')->pluck('nis');
 
-			for ($i=0; $i < count($nis); $i++) {
-				$telp = Siswa::where('nis', $nis[$i])->get('telp_wali')->pluck('telp_wali');
-			}
+            if (count($nis) > 0) {
+                for ($i=0; $i < count($nis); $i++) {
+                    $telp = Siswa::where('nis', $nis[$i])->get('telp_wali')->pluck('telp_wali');
+                }
 
-			// $response = $client->sms()->send(
-			//     new \Vonage\SMS\Message\SMS("6283117414321", BRAND_NAME, 'A text message sent using the Nexmo SMS API')
-			// );
-			//
-			// $message = $response->current();
-			//
-			// if ($message->getStatus() == 0) {
-			//     echo "The message was sent successfully\n";
-			// } else {
-			//     echo "The message failed with status: " . $message->getStatus() . "\n";
-			// }
+                return dd($telp);
 
-			return dd($telp);
+                if (count($telp) > 0) {
+                    for ($i=0; $i < count($telp); $i++) {
+                        // $response = $client->sms()->send(
+                        //     new \Vonage\SMS\Message\SMS(
+                        //         $telp[$i],
+                        //         BRAND_NAME,
+                        //         'A text message sent using the Nexmo SMS API'
+                        //     )
+                        // );
+                    }
+                    return redirect()->back()->with('status', 'SMS sudah dikirim!');
+                }else {
+                    return redirect()->back()->with('status', 'Tidak ada nomor telp!');
+                }
+            }else {
+                return redirect()->back()->with('status', 'Tidak ada siswa dengan poin diantara 25-49!');
+            }
 		}elseif ($req->pilih1 == null && $req->pilih2 == 1 && $req->pilih3 == null) {
 			$nis = Pelanggaran::where('total_poin', '>=', 50)
 				->where('total_poin', '<=', 69)
 				->get('nis')->pluck('nis');
 
-			for ($i=0; $i < count($nis); $i++) {
-				$telp = Siswa::where('nis', $nis[$i])->get('telp_wali')->pluck('telp_wali');
-			}
-			return dd($telp);
+			if (count($nis) > 0) {
+                for ($i=0; $i < count($nis); $i++) {
+                    $telp = Siswa::where('nis', $nis[$i])->get('telp_wali')->pluck('telp_wali');
+                }
+
+                return dd($telp);
+
+                if (count($telp) > 0) {
+                    for ($i=0; $i < count($telp); $i++) {
+                        // $response = $client->sms()->send(
+                        //     new \Vonage\SMS\Message\SMS(
+                        //         $telp[$i],
+                        //         BRAND_NAME,
+                        //         'A text message sent using the Nexmo SMS API'
+                        //     )
+                        // );
+                    }
+                    return redirect()->back()->with('status', 'SMS sudah dikirim!');
+                }else {
+                    return redirect()->back()->with('status', 'Tidak ada nomor telp!');
+                }
+            }else {
+                return redirect()->back()->with('status', 'Tidak ada siswa dengan poin diantara 50-69!');
+            }
 		}elseif ($req->pilih1 == null && $req->pilih2 == null && $req->pilih3 == 1) {
 			$nis = Pelanggaran::where('total_poin', '>=', 70)
-				->where('total_poin', '<=', 79)
 				->get('nis')->pluck('nis');
 
-			for ($i=0; $i < count($nis); $i++) {
-				$telp = Siswa::where('nis', $nis[$i])->get('telp_wali')->pluck('telp_wali');
-			}
-			return dd($telp);
+			if (count($nis) > 0) {
+                for ($i=0; $i < count($nis); $i++) {
+                    $telp = Siswa::where('nis', $nis[$i])->get('telp_wali')->pluck('telp_wali');
+                }
+
+                return dd($telp);
+
+                if (count($telp) > 0) {
+                    for ($i=0; $i < count($telp); $i++) {
+                        // $response = $client->sms()->send(
+                        //     new \Vonage\SMS\Message\SMS(
+                        //         $telp[$i],
+                        //         BRAND_NAME,
+                        //         'A text message sent using the Nexmo SMS API'
+                        //     )
+                        // );
+                    }
+                    return redirect()->back()->with('status', 'SMS sudah dikirim!');
+                }else {
+                    return redirect()->back()->with('status', 'Tidak ada nomor telp!');
+                }
+            }else {
+                return redirect()->back()->with('status', 'Tidak ada siswa dengan poin diatas atau sama dengan 70 poin!');
+            }
 		}elseif ($req->pilih1 == 1 && $req->pilih2 == 1 && $req->pilih3 == null) {
 			$nis1 = Pelanggaran::where('total_poin', '>=', 25)
 				->where('total_poin', '<=', 49)
 				->get('nis')->pluck('nis');
 
-			for ($i=0; $i < count($nis1); $i++) {
-				$telp1 = Siswa::where('nis', $nis[$i])->get('telp_wali')->pluck('telp_wali');
-			}
+            $nis2 = Pelanggaran::where('total_poin', '>=', 50)
+                ->where('total_poin', '<=', 69)
+                ->get('nis')->pluck('nis');
 
-			$nis2 = Pelanggaran::where('total_poin', '>=', 50)
-				->where('total_poin', '<=', 69)
-				->get('nis')->pluck('nis');
+            if (count($nis1) > 0 || count($nis2) > 0) {
+                for ($i=0; $i < count($nis1); $i++) {
+                    $telp1 = Siswa::where('nis', $nis1[$i])->get('telp_wali')->pluck('telp_wali');
+                }
 
-			for ($i=0; $i < count($nis2); $i++) {
-				$telp2 = Siswa::where('nis', $nis[$i])->get('telp_wali')->pluck('telp_wali');
-			}
+                for ($i=0; $i < count($nis2); $i++) {
+                    $telp2 = Siswa::where('nis', $nis2[$i])->get('telp_wali')->pluck('telp_wali');
+                }
+
+                if (count($telp1) > 0 && count($telp2) > 0) {
+                    for ($i=0; $i < count($telp1); $i++) {
+
+                    }
+                    for ($i=0; $i < count($telp2); $i++) {
+
+                    }
+
+                    return redirect()->back()->with('status', 'SMS sudah dikirim!');
+                }elseif (count($telp1) > 0) {
+                    for ($i=0; $i < count($telp1); $i++) {
+
+                    }
+
+                    return redirect()->back()->with('status', 'SMS sudah dikirim!');
+                }elseif (count($telp2) > 0) {
+                    for ($i=0; $i < count($telp2); $i++) {
+
+                    }
+
+                    return redirect()->back()->with('status', 'SMS sudah dikirim!');
+                }else {
+                    return redirect()->back()->with('status', 'Tidak ada nomor telp!');
+                }
+            }else {
+                return redirect()->back()->with('status', 'Tidak ada siswa dengan poin diantara 25-49 dan 50-69 poin!');
+            }
 		}elseif ($req->pilih1 == 1 && $req->pilih2 == null && $req->pilih3 == 1) {
 			$nis1 = Pelanggaran::where('total_poin', '>=', 25)
 				->where('total_poin', '<=', 49)
 				->get('nis')->pluck('nis');
 
-			for ($i=0; $i < count($nis1); $i++) {
-				$telp1 = Siswa::where('nis', $nis[$i])->get('telp_wali')->pluck('telp_wali');
-			}
-
 			$nis3 = Pelanggaran::where('total_poin', '>=', 70)
-				->where('total_poin', '<=', 79)
 				->get('nis')->pluck('nis');
 
-			for ($i=0; $i < count($nis3); $i++) {
-				$telp3 = Siswa::where('nis', $nis[$i])->get('telp_wali')->pluck('telp_wali');
-			}
+            if (count($nis1) > 0 || count($nis3) > 0) {
+                for ($i=0; $i < count($nis1); $i++) {
+                    $telp1 = Siswa::where('nis', $nis1[$i])->get('telp_wali')->pluck('telp_wali');
+                }
+
+                for ($i=0; $i < count($nis3); $i++) {
+                    $telp3 = Siswa::where('nis', $nis3[$i])->get('telp_wali')->pluck('telp_wali');
+                }
+
+                if (count($telp1) > 0 && count($telp3) > 0) {
+                    for ($i=0; $i < count($telp1); $i++) {
+
+                    }
+                    for ($i=0; $i < count($telp3); $i++) {
+
+                    }
+
+                    return redirect()->back()->with('status', 'SMS sudah dikirim!');
+                }elseif (count($telp1) > 0) {
+                    for ($i=0; $i < count($telp1); $i++) {
+
+                    }
+
+                    return redirect()->back()->with('status', 'SMS sudah dikirim!');
+                }elseif (count($telp3) > 0) {
+                    for ($i=0; $i < count($telp3); $i++) {
+
+                    }
+
+                    return redirect()->back()->with('status', 'SMS sudah dikirim!');
+                }else {
+                    return redirect()->back()->with('status', 'Tidak ada nomor telp!');
+                }
+            }else {
+                return redirect()->back()->with('status', 'Tidak ada siswa dengan poin diantara 25-49 dan diatas atau sama dengan 70 poin!');
+            }
 		}elseif ($req->pilih1 == null && $req->pilih2 == 1 && $req->pilih3 == 1) {
 			$nis2 = Pelanggaran::where('total_poin', '>=', 50)
 				->where('total_poin', '<=', 69)
 				->get('nis')->pluck('nis');
 
-			for ($i=0; $i < count($nis2); $i++) {
-				$telp2 = Siswa::where('nis', $nis[$i])->get('telp_wali')->pluck('telp_wali');
-			}
-
 			$nis3 = Pelanggaran::where('total_poin', '>=', 70)
-				->where('total_poin', '<=', 79)
 				->get('nis')->pluck('nis');
 
-			for ($i=0; $i < count($nis3); $i++) {
-				$telp3 = Siswa::where('nis', $nis[$i])->get('telp_wali')->pluck('telp_wali');
-			}
+			if (count($nis2) > 0 || count($nis3) > 0) {
+                for ($i=0; $i < count($nis2); $i++) {
+                    $telp2 = Siswa::where('nis', $nis2[$i])->get('telp_wali')->pluck('telp_wali');
+                }
+
+                for ($i=0; $i < count($nis3); $i++) {
+                    $telp3 = Siswa::where('nis', $nis3[$i])->get('telp_wali')->pluck('telp_wali');
+                }
+
+                if (count($telp2) > 0 && count($telp3) > 0) {
+                    for ($i=0; $i < count($telp2); $i++) {
+
+                    }
+                    for ($i=0; $i < count($telp3); $i++) {
+
+                    }
+
+                    return redirect()->back()->with('status', 'SMS sudah dikirim!');
+                }elseif (count($telp2) > 0) {
+                    for ($i=0; $i < count($telp2); $i++) {
+
+                    }
+
+                    return redirect()->back()->with('status', 'SMS sudah dikirim!');
+                }elseif (count($telp3) > 0) {
+                    for ($i=0; $i < count($telp3); $i++) {
+
+                    }
+
+                    return redirect()->back()->with('status', 'SMS sudah dikirim!');
+                }else {
+                    return redirect()->back()->with('status', 'Tidak ada nomor telp!');
+                }
+            }else {
+                return redirect()->back()->with('status', 'Tidak ada siswa dengan poin diantara 50-69 dan diatas atau sama dengan 70 poin!');
+            }
 		}elseif ($req->pilih1 == 1 && $req->pilih2 == 1 && $req->pilih3 == 1) {
 			$nis1 = Pelanggaran::where('total_poin', '>=', 25)
 				->where('total_poin', '<=', 49)
 				->get('nis')->pluck('nis');
-
-			for ($i=0; $i < count($nis1); $i++) {
-				$telp1 = Siswa::where('nis', $nis[$i])->get('telp_wali')->pluck('telp_wali');
-			}
-
 			$nis2 = Pelanggaran::where('total_poin', '>=', 50)
 				->where('total_poin', '<=', 69)
 				->get('nis')->pluck('nis');
-
-			for ($i=0; $i < count($nis2); $i++) {
-				$telp2 = Siswa::where('nis', $nis[$i])->get('telp_wali')->pluck('telp_wali');
-			}
-
 			$nis3 = Pelanggaran::where('total_poin', '>=', 70)
-				->where('total_poin', '<=', 79)
 				->get('nis')->pluck('nis');
 
-			for ($i=0; $i < count($nis3); $i++) {
-				$telp3 = Siswa::where('nis', $nis[$i])->get('telp_wali')->pluck('telp_wali');
-			}
+            if (count($nis1) > 0 || count($nis2) > 0 || count($nis3) > 0) {
+                for ($i=0; $i < count($nis1); $i++) {
+                    $telp1 = Siswa::where('nis', $nis1[$i])->get('telp_wali')->pluck('telp_wali');
+                }
+                for ($i=0; $i < count($nis2); $i++) {
+                    $telp2 = Siswa::where('nis', $nis2[$i])->get('telp_wali')->pluck('telp_wali');
+                }
+                for ($i=0; $i < count($nis3); $i++) {
+                    $telp3 = Siswa::where('nis', $nis3[$i])->get('telp_wali')->pluck('telp_wali');
+                }
+
+                if (count($telp1) > 0 && count($telp2) > 0 && count($telp3) > 0) {
+                    for ($i=0; $i < count($telp1); $i++) {
+
+                    }
+                    for ($i=0; $i < count($telp2); $i++) {
+
+                    }
+                    for ($i=0; $i < count($telp3); $i++) {
+
+                    }
+
+                    return redirect()->back()->with('status', 'SMS sudah dikirim!');
+                }elseif (count($telp1) > 0) {
+                    for ($i=0; $i < count($telp1); $i++) {
+
+                    }
+
+                    return redirect()->back()->with('status', 'SMS sudah dikirim!');
+                }elseif (count($telp2) > 0) {
+                    for ($i=0; $i < count($telp2); $i++) {
+
+                    }
+
+                    return redirect()->back()->with('status', 'SMS sudah dikirim!');
+                }elseif (count($telp3) > 0) {
+                    for ($i=0; $i < count($telp3); $i++) {
+
+                    }
+
+                    return redirect()->back()->with('status', 'SMS sudah dikirim!');
+                }else {
+                    return redirect()->back()->with('status', 'Tidak ada nomor telp!');
+                }
+            }else {
+                return redirect()->back()->with('status', 'Tidak ada siswa dengan poin diantara 25-49, 50-69 dan diatas atau sama dengan 70 poin!');
+            }
 		}else {
 			return redirect()->back()->with('status', 'Tidak Memilih Opsi!');
 		}
