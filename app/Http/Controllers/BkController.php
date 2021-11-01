@@ -197,6 +197,7 @@ class BkController extends Controller
                     $telp = Siswa::where('nis', $nis[$i])->get('telp_wali')->pluck('telp_wali');
                     $nama = Siswa::where('nis', $nis[$i])->get('nama_siswa')->pluck('nama_siswa');
                     $kelas = Siswa::where('nis', $nis[$i])->get('kelas')->pluck('kelas');
+                    $poin = Pelanggaran::where('nis', $nis[$i])->get('total_poin')->pluck('total_poin');
                 }
 
                 if (count($telp) > 0) {
@@ -205,7 +206,7 @@ class BkController extends Controller
                         $nexmo->message()->send([
                             'to' => $telp[$i],
                             'from' => '6283117414321',
-                            'text' => 'Guru BK SMK PGRI 2 Denpasar.<br> Dengan Hormat, sehubungan dengan hasil perolehan poin pelanggaran anak Bapak / Ibu, Orang Tua atau Wali dari '.$nama[$i].' dengan '.$kelas[$i].'. Bahwa '.$nama[$i].' telah terkena sanksi dengan poin sekian. Berdasarkan poin yang didapatkan, '.$nama[$i].' DISKORS selama 1 Hari. Demikianlah kami sampaikan kepada Bapak / Ibu atas bantuan dan perhatiannya, kami ucapkan terima kasih.',
+                            'text' => 'Guru BK SMK PGRI 2 Denpasar. Dengan Hormat, sehubungan dengan hasil perolehan poin pelanggaran anak Bapak / Ibu, Orang Tua atau Wali dari '.$nama[$i].' dikelas '.$kelas[$i].'. Bahwa '.$nama[$i].' telah terkena sanksi dengan total poin '.$poin[$i].'. Berdasarkan poin yang didapatkan, '.$nama[$i].' DISKORS selama 1 Hari. Demikianlah kami sampaikan kepada Bapak / Ibu atas bantuan dan perhatiannya, kami ucapkan terima kasih.',
                         ]);
                     }
                     return redirect()->back()->with('status', 'SMS sudah dikirim!');
@@ -224,6 +225,7 @@ class BkController extends Controller
                     $telp = Siswa::where('nis', $nis[$i])->get('telp_wali')->pluck('telp_wali');
                     $nama = Siswa::where('nis', $nis[$i])->get('nama_siswa')->pluck('nama_siswa');
                     $kelas = Siswa::where('nis', $nis[$i])->get('kelas')->pluck('kelas');
+                    $poin = Pelanggaran::where('nis', $nis[$i])->get('total_poin')->pluck('total_poin');
                 }
 
                 if (count($telp) > 0) {
@@ -231,7 +233,7 @@ class BkController extends Controller
                         $nexmo->message()->send([
                             'to' => $telp[$i],
                             'from' => '6283117414321',
-                            'text' => 'Guru BK SMK PGRI 2 Denpasar.<br> Dengan Hormat, sehubungan dengan hasil perolehan poin pelanggaran anak Bapak / Ibu, Orang Tua atau Wali dari '.$nama[$i].' dengan '.$kelas[$i].'. Bahwa '.$nama[$i].' telah terkena sanksi dengan poin sekian. Berdasarkan poin yang didapatkan, '.$nama[$i].' dinyatakan telah melakukan pelanggaran berat dan diharuskan wali untuk datang ke sekolah pada hari senin. Demikianlah kami sampaikan kepada Bapak / Ibu atas bantuan dan perhatiannya, kami ucapkan terima kasih.',
+                            'text' => 'Guru BK SMK PGRI 2 Denpasar. Dengan Hormat, sehubungan dengan hasil perolehan poin pelanggaran anak Bapak / Ibu, Orang Tua atau Wali dari '.$nama[$i].' dikelas '.$kelas[$i].'. Bahwa '.$nama[$i].' telah terkena sanksi dengan total poin '.$poin[$i].'. Berdasarkan poin yang didapatkan, '.$nama[$i].' dinyatakan telah melakukan pelanggaran berat dan diharuskan wali untuk datang ke sekolah pada hari senin. Demikianlah kami sampaikan kepada Bapak / Ibu atas bantuan dan perhatiannya, kami ucapkan terima kasih.',
                         ]);
                     }
                     return redirect()->back()->with('status', 'SMS sudah dikirim!');
@@ -253,26 +255,28 @@ class BkController extends Controller
                     $telp1 = Siswa::where('nis', $nis1[$i])->get('telp_wali')->pluck('telp_wali');
                     $nama1 = Siswa::where('nis', $nis1[$i])->get('nama_siswa')->pluck('nama_siswa');
                     $kelas1 = Siswa::where('nis', $nis1[$i])->get('kelas')->pluck('kelas');
+                    $poin1 = Pelanggaran::where('nis', $nis1[$i])->get('total_poin')->pluck('total_poin');
                 }
                 for ($i=0; $i < count($nis2); $i++) {
                     $telp2 = Siswa::where('nis', $nis2[$i])->get('telp_wali')->pluck('telp_wali');
                     $nama2 = Siswa::where('nis', $nis2[$i])->get('nama_siswa')->pluck('nama_siswa');
                     $kelas2 = Siswa::where('nis', $nis2[$i])->get('kelas')->pluck('kelas');
+                    $poin2 = Pelanggaran::where('nis', $nis2[$i])->get('total_poin')->pluck('total_poin');
                 }
                 if (count($telp1) > 0 && count($telp2) > 0) {
                     for ($i=0; $i < count($telp1); $i++) {
                         $nexmo = app('Nexmo\Client');
                         $nexmo->message()->send([
-                            'to' => $telp[$i],
+                            'to' => $telp1[$i],
                             'from' => '6283117414321',
-                            'text' => 'Guru BK SMK PGRI 2 Denpasar.<br> Dengan Hormat, sehubungan dengan hasil perolehan poin pelanggaran anak Bapak / Ibu, Orang Tua atau Wali dari '.$nama[$i].' dengan '.$kelas[$i].'. Bahwa '.$nama[$i].' telah terkena sanksi dengan poin sekian. Berdasarkan poin yang didapatkan, '.$nama[$i].' DISKORS selama 1 Hari. Demikianlah kami sampaikan kepada Bapak / Ibu atas bantuan dan perhatiannya, kami ucapkan terima kasih.',
+                            'text' => 'Guru BK SMK PGRI 2 Denpasar. Dengan Hormat, sehubungan dengan hasil perolehan poin pelanggaran anak Bapak / Ibu, Orang Tua atau Wali dari '.$nama1[$i].' dikelas '.$kelas1[$i].'. Bahwa '.$nama1[$i].' telah terkena sanksi dengan total poin '.$poin1[$i].'. Berdasarkan poin yang didapatkan, '.$nama1[$i].' DISKORS selama 1 Hari. Demikianlah kami sampaikan kepada Bapak / Ibu atas bantuan dan perhatiannya, kami ucapkan terima kasih.',
                         ]);
                     }
                     for ($i=0; $i < count($telp2); $i++) {
                         $nexmo->message()->send([
-                            'to' => $telp[$i],
+                            'to' => $telp2[$i],
                             'from' => '6283117414321',
-                            'text' => 'Guru BK SMK PGRI 2 Denpasar.<br> Dengan Hormat, sehubungan dengan hasil perolehan poin pelanggaran anak Bapak / Ibu, Orang Tua atau Wali dari '.$nama[$i].' dengan '.$kelas[$i].'. Bahwa '.$nama[$i].' telah terkena sanksi dengan poin sekian. Berdasarkan poin yang didapatkan, '.$nama[$i].' dinyatakan telah melakukan pelanggaran berat dan diharuskan wali untuk datang ke sekolah pada hari senin. Demikianlah kami sampaikan kepada Bapak / Ibu atas bantuan dan perhatiannya, kami ucapkan terima kasih.',
+                            'text' => 'Guru BK SMK PGRI 2 Denpasar.Dengan Hormat, sehubungan dengan hasil perolehan poin pelanggaran anak Bapak / Ibu, Orang Tua atau Wali dari '.$nama2[$i].' dikelas '.$kelas2[$i].'. Bahwa '.$nama2[$i].' telah terkena sanksi dengan total poin '.$poin2[$i].'. Berdasarkan poin yang didapatkan, '.$nama2[$i].' dinyatakan telah melakukan pelanggaran berat dan diharuskan wali untuk datang ke sekolah pada hari senin. Demikianlah kami sampaikan kepada Bapak / Ibu atas bantuan dan perhatiannya, kami ucapkan terima kasih.',
                         ]);
                     }
                     return redirect()->back()->with('status', 'SMS sudah dikirim!');
@@ -280,18 +284,18 @@ class BkController extends Controller
                     for ($i=0; $i < count($telp1); $i++) {
                         $nexmo = app('Nexmo\Client');
                         $nexmo->message()->send([
-                            'to' => $telp[$i],
+                            'to' => $telp1[$i],
                             'from' => '6283117414321',
-                            'text' => 'Guru BK SMK PGRI 2 Denpasar.<br> Dengan Hormat, sehubungan dengan hasil perolehan poin pelanggaran anak Bapak / Ibu, Orang Tua atau Wali dari '.$nama[$i].' dengan '.$kelas[$i].'. Bahwa '.$nama[$i].' telah terkena sanksi dengan poin sekian. Berdasarkan poin yang didapatkan, '.$nama[$i].' DISKORS selama 1 Hari. Demikianlah kami sampaikan kepada Bapak / Ibu atas bantuan dan perhatiannya, kami ucapkan terima kasih.',
+                            'text' => 'Guru BK SMK PGRI 2 Denpasar. Dengan Hormat, sehubungan dengan hasil perolehan poin pelanggaran anak Bapak / Ibu, Orang Tua atau Wali dari '.$nama1[$i].' dikelas '.$kelas1[$i].'. Bahwa '.$nama1[$i].' telah terkena sanksi dengan total poin '.$poin1[$i].'. Berdasarkan poin yang didapatkan, '.$nama1[$i].' DISKORS selama 1 Hari. Demikianlah kami sampaikan kepada Bapak / Ibu atas bantuan dan perhatiannya, kami ucapkan terima kasih.',
                         ]);
                     }
                     return redirect()->back()->with('status', 'SMS sudah dikirim!');
                 }elseif (count($telp2) > 0) {
                     for ($i=0; $i < count($telp2); $i++) {
                         $nexmo->message()->send([
-                            'to' => $telp[$i],
+                            'to' => $telp2[$i],
                             'from' => '6283117414321',
-                            'text' => 'Guru BK SMK PGRI 2 Denpasar.<br> Dengan Hormat, sehubungan dengan hasil perolehan poin pelanggaran anak Bapak / Ibu, Orang Tua atau Wali dari '.$nama[$i].' dengan '.$kelas[$i].'. Bahwa '.$nama[$i].' telah terkena sanksi dengan poin sekian. Berdasarkan poin yang didapatkan, '.$nama[$i].' dinyatakan telah melakukan pelanggaran berat dan diharuskan wali untuk datang ke sekolah pada hari senin. Demikianlah kami sampaikan kepada Bapak / Ibu atas bantuan dan perhatiannya, kami ucapkan terima kasih.',
+                            'text' => 'Guru BK SMK PGRI 2 Denpasar. Dengan Hormat, sehubungan dengan hasil perolehan poin pelanggaran anak Bapak / Ibu, Orang Tua atau Wali dari '.$nama2[$i].' dikelas '.$kelas2[$i].'. Bahwa '.$nama2[$i].' telah terkena sanksi dengan total poin '.$poin2[$i].'. Berdasarkan poin yang didapatkan, '.$nama2[$i].' dinyatakan telah melakukan pelanggaran berat dan diharuskan wali untuk datang ke sekolah pada hari senin. Demikianlah kami sampaikan kepada Bapak / Ibu atas bantuan dan perhatiannya, kami ucapkan terima kasih.',
                         ]);
                     }
                     return redirect()->back()->with('status', 'SMS sudah dikirim!');
