@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "58df2753ba3b8cd68ba33db84f85057a",
+    "content-hash": "c652628c71a56952235790b258dcf2b9",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2312,6 +2312,77 @@
                 "source": "https://github.com/nette/utils/tree/v3.2.5"
             },
             "time": "2021-09-20T10:50:11+00:00"
+        },
+        {
+            "name": "nexmo/laravel",
+            "version": "2.4.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Nexmo/nexmo-laravel.git",
+                "reference": "029bdc19fc58cd6ef0aa75c7041d82b9d9dc61bd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Nexmo/nexmo-laravel/zipball/029bdc19fc58cd6ef0aa75c7041d82b9d9dc61bd",
+                "reference": "029bdc19fc58cd6ef0aa75c7041d82b9d9dc61bd",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "^5.2|^6.0|^7.0|^8.0",
+                "php": "^5.6|^7.1|^8.0",
+                "vonage/client": "^2.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "~3.0|^4.0|^5.0|^6.0",
+                "phpunit/phpunit": "^5.3|~6.0|~8.0|~9.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Nexmo\\Laravel\\NexmoServiceProvider"
+                    ],
+                    "aliases": {
+                        "Nexmo": "Nexmo\\Laravel\\Facade\\Nexmo"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Nexmo\\Laravel\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Tim Lytle",
+                    "email": "tim@nexmo.com",
+                    "homepage": "http://twitter.com/tjlytle",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Michael Heap",
+                    "email": "michael.heap@nexmo.com",
+                    "homepage": "http://twitter.com/mheap",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Chris Tankersley",
+                    "email": "chris.tankersley@nexmo.com",
+                    "homepage": "http://twitter.com/dragonmantank",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Laravel Package for Nexmo's PHP Client",
+            "support": {
+                "email": "devrel@nexmo.com",
+                "issues": "https://github.com/Nexmo/nexmo-laravel/issues",
+                "source": "https://github.com/Nexmo/nexmo-laravel/tree/2.4.1"
+            },
+            "time": "2020-12-04T13:11:05+00:00"
         },
         {
             "name": "nikic/php-parser",

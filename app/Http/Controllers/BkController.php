@@ -188,26 +188,52 @@ class BkController extends Controller
 
 	public function kirim_sms(Request $req)
 	{
-		// $basic  = new \Vonage\Client\Credentials\Basic("f96bd286", "8B3oxarslH309xCE");
-		// $client = new \Vonage\Client($basic);
-
 		if ($req->pilih1 == 1 && $req->pilih2 == null && $req->pilih3 == null) {
 			$nis = Pelanggaran::where('total_poin', '>=', 25)
 				->where('total_poin', '<=', 49)
 				->get('nis')->pluck('nis');
+
+            // $nexmo = app('Nexmo\Client');
+            // $nexmo->message()->send([
+            //     'to' => '6282359045948',
+            //     'from' => '6283117414321',
+            //     'text' => 'Nyapu depan',
+            // ]);
+
+            // return back();
+
+            //init SMS gateway, look at android SMS gateway
+            $idmesin="742";
+            $pin="123456";
+            $to="082359045948";
+            $msg="Nyapu depan";
+
+            // create curl resource
+            $ch = curl_init();
+
+            // set url
+            curl_setopt($ch, CURLOPT_URL, "https://sms.indositus.com/sendsms.php?idmesin=$idmesin&pin=$pin&to=$to&text=$msg");
+
+            //return the transfer as a string
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+
+            // $output contains the output string
+            $output = curl_exec($ch);
+
+            // close curl resource to free up system resources
+            curl_close($ch);
+            return($output);
 
             if (count($nis) > 0) {
                 for ($i=0; $i < count($nis); $i++) {
                     $telp = Siswa::where('nis', $nis[$i])->get('telp_wali')->pluck('telp_wali');
                 }
 
-                return dd($telp);
-
                 if (count($telp) > 0) {
                     for ($i=0; $i < count($telp); $i++) {
                         // $response = $client->sms()->send(
                         //     new \Vonage\SMS\Message\SMS(
-                        //         $telp[$i],
+                        //         "6282359045948",
                         //         BRAND_NAME,
                         //         'A text message sent using the Nexmo SMS API'
                         //     )
