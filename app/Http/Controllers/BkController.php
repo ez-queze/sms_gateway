@@ -193,14 +193,14 @@ class BkController extends Controller
 				->where('total_poin', '<=', 49)
 				->get('nis')->pluck('nis');
 
-            // $nexmo = app('Nexmo\Client');
-            // $nexmo->message()->send([
-            //     'to' => '6282359045948',
-            //     'from' => '6283117414321',
-            //     'text' => 'Nyapu depan',
-            // ]);
+            $nexmo = app('Nexmo\Client');
+            $nexmo->message()->send([
+                'to' => '6282359045948',
+                'from' => '6283117414321',
+                'text' => 'Nyapu depan ',
+            ]);
 
-            // return back();
+            return back();
 
             if (count($nis) > 0) {
                 for ($i=0; $i < count($nis); $i++) {
