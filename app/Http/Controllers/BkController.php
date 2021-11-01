@@ -202,28 +202,6 @@ class BkController extends Controller
 
             // return back();
 
-            //init SMS gateway, look at android SMS gateway
-            $idmesin="742";
-            $pin="123456";
-            $to="082359045948";
-            $msg="Nyapu depan";
-
-            // create curl resource
-            $ch = curl_init();
-
-            // set url
-            curl_setopt($ch, CURLOPT_URL, "https://sms.indositus.com/sendsms.php?idmesin=$idmesin&pin=$pin&to=$to&text=$msg");
-
-            //return the transfer as a string
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-
-            // $output contains the output string
-            $output = curl_exec($ch);
-
-            // close curl resource to free up system resources
-            curl_close($ch);
-            return($output);
-
             if (count($nis) > 0) {
                 for ($i=0; $i < count($nis); $i++) {
                     $telp = Siswa::where('nis', $nis[$i])->get('telp_wali')->pluck('telp_wali');
