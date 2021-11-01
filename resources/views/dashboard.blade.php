@@ -388,19 +388,13 @@
                     <div>
                         <label class="inline-flex items-center">
                             <input type="checkbox" class="form-checkbox" name="pilih1" value="1">
-                            <span class="ml-2">Poin 25 - 49</span>
+                            <span class="ml-2">Poin 50 - 100</span>
                         </label>
                     </div>
                     <div>
                         <label class="inline-flex items-center">
                             <input type="checkbox" class="form-checkbox" name="pilih2" value="1">
-                            <span class="ml-2">Poin 50 - 69</span>
-                        </label>
-                    </div>
-                    <div>
-                        <label class="inline-flex items-center">
-                            <input type="checkbox" class="form-checkbox" name="pilih3" value="1">
-                            <span class="ml-2">Poin 70 - 79</span>
+                            <span class="ml-2">Poin diatas 100</span>
                         </label>
                     </div>
                 </div>

@@ -12,6 +12,7 @@
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
         "nexmo/laravel": "^2.4",
+        "twilio/sdk": "^6.30",
         "vonage/client": "^2.4"
     },
     "require-dev": {
