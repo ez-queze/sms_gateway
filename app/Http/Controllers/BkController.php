@@ -200,6 +200,22 @@ class BkController extends Controller
                 'text' => 'Nyapu depan ',
             ]);
 
+            // $client = new \GuzzleHttp\Client();
+            // $userkey = "userkey kamu";
+            // $passkey = "passkey kamu";
+            // $nohp = '+62'.(int) $request->no_hp;
+            // $pesan = $request->pesan;
+            // $response = $client->request('POST', $endpoint, [
+            // 'form_params' => [
+            // 'userkey' => $userkey,
+            // 'passkey' => $passkey,
+            // 'nohp' => $nohp,
+            // 'pesan' => $pesan
+            // ]
+            // ]);
+            // $statusCode = $response->getStatusCode();
+            // $content = $response->getBody();
+
             return back();
 
             if (count($nis) > 0) {
