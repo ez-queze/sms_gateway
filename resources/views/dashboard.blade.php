@@ -10,7 +10,6 @@
 					x-text="tab"></li>
 			</template>
 		</ul>
-
         {{-- Tab Data Siswa --}}
 
         <div  x-show="activeTab===0" class="overflow-hidden bg-white shadow-sm sm:rounded-lg">
@@ -290,9 +289,13 @@
                         <option>Perempuan</option>
                     </select>
                 </div>
+
                 <div class="grid grid-cols-1">
                     <label class="text-xs font-semibold text-gray-500 uppercase md:text-sm text-light">No Tlpn </label>
-                    <input name="telp_wali" class="block w-full px-0 pt-1 pb-2 mt-0 bg-transparent border-0 border-b-2 border-green-200 appearance-none focus:outline-none focus:ring-0 focus:border-black" type="text" placeholder="" />
+                <div class="flex">
+                    <span class="text-sm border border-2 rounded-l px-2 py-1 bg-white-300 whitespace-no-wrap">+62 </span>
+                    <input name="telp_wali" class="block w-full px-2 pt-1 pb-2 mt-0 bg-transparent border-0 border-b-2 border-green-200 appearance-none focus:outline-none focus:ring-0 focus:border-black" type="text" placeholder="" />
+                </div>
                 </div>
                 <div class="grid grid-cols-1">
                     <label class="text-xs font-semibold text-gray-500 uppercase md:text-sm text-light">Kelas </label>
