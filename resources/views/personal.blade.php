@@ -71,9 +71,9 @@
 									<div class="px-4 py-2">{{ $pelanggaran->total_poin }}</div>
 								</div>
 							</div>
-							<!-- <button class="block p-3 my-4 w-full text-sm font-semibold text-green-800 rounded-lg hover:bg-gray-100 focus:outline-none focus:shadow-outline focus:bg-gray-400 hover:shadow-xs">
-								Cetak Laporan
-							</button> -->
+
+                            <button class="block p-3 my-4 w-full text-sm font-semibold text-green-800 rounded-lg hover:bg-gray-100 focus:outline-none focus:shadow-outline focus:bg-gray-400 hover:shadow-xs" onClick="window.print()">Cetak Laporan</button>
+
 						</div>
 						<!-- End of about section -->
 						<div class="my-4"></div>

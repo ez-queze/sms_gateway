@@ -7,10 +7,13 @@
     "require": {
         "php": "^7.3",
         "fruitcake/laravel-cors": "^2.0",
-        "guzzlehttp/guzzle": "^7.0.1",
+        "guzzlehttp/guzzle": "^7.4",
         "laravel/framework": "^8.65",
         "laravel/sanctum": "^2.11",
-        "laravel/tinker": "^2.5"
+        "laravel/tinker": "^2.5",
+        "nexmo/laravel": "^2.4",
+        "twilio/sdk": "^6.30",
+        "vonage/client": "^2.4"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

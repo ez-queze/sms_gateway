@@ -15,9 +15,9 @@ class CreateJenisPelanggaransTable extends Migration
     {
         Schema::create('jenis_pelanggarans', function (Blueprint $table) {
             $table->id();
+            $table->string('kategori');
             $table->string('nama_pelanggaran');
             $table->integer('poin');
-            $table->string('kategori');
             $table->timestamps();
         });
     }
