@@ -34,7 +34,10 @@
                     </div>
                     <div class="grid grid-cols-1">
                         <label class="text-xs font-semibold text-gray-500 uppercase md:text-sm text-light">No Tlpn </label>
-                        <input name="telp_wali" value="{{ $siswa->telp_wali }}" class="block px-0 pt-1 pb-2 mt-0 w-full bg-transparent border-0 border-b-2 border-green-200 appearance-none focus:outline-none focus:ring-0 focus:border-black" type="text" placeholder="" />
+                    <div class="flex">
+                        <span class="text-sm border border-2 rounded-l px-2 py-1 bg-white-300 whitespace-no-wrap">+62 </span>
+                        <input name="telp_wali" value="{{ $siswa->telp_wali }}" class="block w-full px-2 pt-1 pb-2 mt-0 bg-transparent border-0 border-b-2 border-green-200 appearance-none focus:outline-none focus:ring-0 focus:border-black" type="text" placeholder="" />
+                    </div>
                     </div>
                     <div class="grid grid-cols-1">
                         <label class="text-xs font-semibold text-gray-500 uppercase md:text-sm text-light">Kelas </label>

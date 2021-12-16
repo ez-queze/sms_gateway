@@ -8,9 +8,12 @@
         "php": "^7.3",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.4",
+        "http-interop/http-factory-guzzle": "^1.2",
         "laravel/framework": "^8.65",
         "laravel/sanctum": "^2.11",
+        "laravel/scout": "^9.3",
         "laravel/tinker": "^2.5",
+        "meilisearch/meilisearch-php": "^0.20.0",
         "nexmo/laravel": "^2.4",
         "twilio/sdk": "^6.30",
         "vonage/client": "^2.4"

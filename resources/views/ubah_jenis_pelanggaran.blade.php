@@ -20,9 +20,9 @@
 		  <div class="grid grid-cols-1 mx-3 mt-2">
                 <label class="text-xs font-semibold text-gray-500 uppercase md:text-sm text-light">Kategori</label>
 			 <select name="kategori" class="block px-0 pt-1 pb-2 mt-0 w-full bg-transparent border-0 border-b-2 border-green-200 appearance-none focus:outline-none focus:ring-0 focus:border-black">
-				<option @if ($jenis_pelanggaran == "Berpakaian") selected @endif>Berpakaian</option>
-				<option @if ($jenis_pelanggaran == "Belajar") selected @endif>Belajar</option>
-				<option @if ($jenis_pelanggaran == "Sikap / Norma") selected @endif>Sikap / Norma</option>
+				<option @if ($jenis_pelanggaran->kategori == "Berpakaian") selected @endif>Berpakaian</option>
+				<option @if ($jenis_pelanggaran->kategori == "Belajar") selected @endif>Belajar</option>
+				<option @if ($jenis_pelanggaran->kategori == "Sikap / Norma") selected @endif>Sikap / Norma</option>
 			 </select>
             </div>
             <div class="grid grid-cols-1 mx-3 mt-2">

@@ -65,7 +65,7 @@ class BkController extends Controller
 
 	public function get_pelanggaran($nis)
 	{
-	    $siswa = Siswa::where('nis', $nis)->get()->first();
+        $siswa = Siswa::where('nis', $nis)->get()->first();
 	    $berpakaian = JenisPelanggaran::where('kategori', 'Berpakaian')->get();
 	    $belajar = JenisPelanggaran::where('kategori', 'Belajar')->get();
 	    $sikap = JenisPelanggaran::where('kategori', 'Sikap / Norma')->get();
@@ -76,9 +76,9 @@ class BkController extends Controller
 
 	public function tambah_pelanggaran(Request $req)
 	{
-		$berpakaian = JenisPelanggaran::where('kategori', 'Berpakaian')->get();
+        $berpakaian = JenisPelanggaran::where('kategori', 'Berpakaian')->get();
 		for ($i=0; $i < count($berpakaian); $i++) {
-			$nama_berpakaian[] = JenisPelanggaran::where('kategori', $req['kategori-0'])->where('nama_pelanggaran', $req['berpakaian-'.$i])->get('nama_pelanggaran')->pluck('nama_pelanggaran')->first();
+            $nama_berpakaian[] = JenisPelanggaran::where('kategori', $req['kategori-0'])->where('nama_pelanggaran', $req['berpakaian-'.$i])->get('nama_pelanggaran')->pluck('nama_pelanggaran')->first();
 			$poin_berpakaian[] = JenisPelanggaran::where('kategori', $req['kategori-0'])->where('nama_pelanggaran', $req['berpakaian-'.$i])->get('poin')->pluck('poin')->first();
 		}
 
@@ -204,7 +204,7 @@ class BkController extends Controller
                     for ($i=0; $i < count($telp); $i++) {
                         $nexmo = app('Nexmo\Client');
                         $nexmo->message()->send([
-                            'to' => $telp[$i],
+                            'to' => '62'.$telp[$i],
                             'from' => '6283117414321',
                             'text' => 'Guru BK SMK PGRI 2 Denpasar. Dengan Hormat, sehubungan dengan hasil perolehan poin pelanggaran anak Bapak / Ibu, Orang Tua atau Wali dari '.$nama[$i].' dikelas '.$kelas[$i].'. Bahwa '.$nama[$i].' telah terkena sanksi dengan total poin '.$poin[$i].'. Berdasarkan poin yang didapatkan, '.$nama[$i].' DISKORS selama 1 Hari. Demikianlah kami sampaikan kepada Bapak / Ibu atas bantuan dan perhatiannya, kami ucapkan terima kasih.',
                         ]);
@@ -231,7 +231,7 @@ class BkController extends Controller
                 if (count($telp) > 0) {
                     for ($i=0; $i < count($telp); $i++) {
                         $nexmo->message()->send([
-                            'to' => $telp[$i],
+                            'to' => '62'.$telp[$i],
                             'from' => '6283117414321',
                             'text' => 'Guru BK SMK PGRI 2 Denpasar. Dengan Hormat, sehubungan dengan hasil perolehan poin pelanggaran anak Bapak / Ibu, Orang Tua atau Wali dari '.$nama[$i].' dikelas '.$kelas[$i].'. Bahwa '.$nama[$i].' telah terkena sanksi dengan total poin '.$poin[$i].'. Berdasarkan poin yang didapatkan, '.$nama[$i].' dinyatakan telah melakukan pelanggaran berat dan diharuskan wali untuk datang ke sekolah pada hari senin. Demikianlah kami sampaikan kepada Bapak / Ibu atas bantuan dan perhatiannya, kami ucapkan terima kasih.',
                         ]);
@@ -267,14 +267,14 @@ class BkController extends Controller
                     for ($i=0; $i < count($telp1); $i++) {
                         $nexmo = app('Nexmo\Client');
                         $nexmo->message()->send([
-                            'to' => $telp1[$i],
+                            'to' => '62'.$telp1[$i],
                             'from' => '6283117414321',
                             'text' => 'Guru BK SMK PGRI 2 Denpasar. Dengan Hormat, sehubungan dengan hasil perolehan poin pelanggaran anak Bapak / Ibu, Orang Tua atau Wali dari '.$nama1[$i].' dikelas '.$kelas1[$i].'. Bahwa '.$nama1[$i].' telah terkena sanksi dengan total poin '.$poin1[$i].'. Berdasarkan poin yang didapatkan, '.$nama1[$i].' DISKORS selama 1 Hari. Demikianlah kami sampaikan kepada Bapak / Ibu atas bantuan dan perhatiannya, kami ucapkan terima kasih.',
                         ]);
                     }
                     for ($i=0; $i < count($telp2); $i++) {
                         $nexmo->message()->send([
-                            'to' => $telp2[$i],
+                            'to' => '62'.$telp2[$i],
                             'from' => '6283117414321',
                             'text' => 'Guru BK SMK PGRI 2 Denpasar.Dengan Hormat, sehubungan dengan hasil perolehan poin pelanggaran anak Bapak / Ibu, Orang Tua atau Wali dari '.$nama2[$i].' dikelas '.$kelas2[$i].'. Bahwa '.$nama2[$i].' telah terkena sanksi dengan total poin '.$poin2[$i].'. Berdasarkan poin yang didapatkan, '.$nama2[$i].' dinyatakan telah melakukan pelanggaran berat dan diharuskan wali untuk datang ke sekolah pada hari senin. Demikianlah kami sampaikan kepada Bapak / Ibu atas bantuan dan perhatiannya, kami ucapkan terima kasih.',
                         ]);
@@ -284,7 +284,7 @@ class BkController extends Controller
                     for ($i=0; $i < count($telp1); $i++) {
                         $nexmo = app('Nexmo\Client');
                         $nexmo->message()->send([
-                            'to' => $telp1[$i],
+                            'to' => '62'.$telp1[$i],
                             'from' => '6283117414321',
                             'text' => 'Guru BK SMK PGRI 2 Denpasar. Dengan Hormat, sehubungan dengan hasil perolehan poin pelanggaran anak Bapak / Ibu, Orang Tua atau Wali dari '.$nama1[$i].' dikelas '.$kelas1[$i].'. Bahwa '.$nama1[$i].' telah terkena sanksi dengan total poin '.$poin1[$i].'. Berdasarkan poin yang didapatkan, '.$nama1[$i].' DISKORS selama 1 Hari. Demikianlah kami sampaikan kepada Bapak / Ibu atas bantuan dan perhatiannya, kami ucapkan terima kasih.',
                         ]);
@@ -293,7 +293,7 @@ class BkController extends Controller
                 }elseif (count($telp2) > 0) {
                     for ($i=0; $i < count($telp2); $i++) {
                         $nexmo->message()->send([
-                            'to' => $telp2[$i],
+                            'to' => '62'.$telp2[$i],
                             'from' => '6283117414321',
                             'text' => 'Guru BK SMK PGRI 2 Denpasar. Dengan Hormat, sehubungan dengan hasil perolehan poin pelanggaran anak Bapak / Ibu, Orang Tua atau Wali dari '.$nama2[$i].' dikelas '.$kelas2[$i].'. Bahwa '.$nama2[$i].' telah terkena sanksi dengan total poin '.$poin2[$i].'. Berdasarkan poin yang didapatkan, '.$nama2[$i].' dinyatakan telah melakukan pelanggaran berat dan diharuskan wali untuk datang ke sekolah pada hari senin. Demikianlah kami sampaikan kepada Bapak / Ibu atas bantuan dan perhatiannya, kami ucapkan terima kasih.',
                         ]);

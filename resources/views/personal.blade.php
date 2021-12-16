@@ -60,7 +60,7 @@
 								</div>
 								<div class="grid grid-cols-2">
 									<div class="px-4 py-2 font-semibold">No Telp Wali.</div>
-									<div class="px-4 py-2">{{ $siswa->telp_wali }}</div>
+									<div class="px-4 py-2">+62{{ $siswa->telp_wali }}</div>
 								</div>
 								<div class="grid grid-cols-2">
 									<div class="px-4 py-2 font-semibold">Tanggal Lahir</div>
@@ -94,41 +94,17 @@
 									<table class="w-full bg-white border-collapse table-auto">
 										<thead>
 											<tr class="text-sm font-medium text-left text-gray-700 rounded-lg" style="font-size: 0.9674rem">
-												<th class="px-4 py-2 bg-gray-200" style="background-color:#f8f8f8">No</th>
-												<th class="px-4 py-2" style="background-color:#f8f8f8">Tanggal</th>
-												<th class="px-4 py-2" style="background-color:#f8f8f8">Kategori</th>
-												<th class="px-4 py-2" style="background-color:#f8f8f8">Nama Pelanggaran</th>
-												<th class="px-4 py-2" style="background-color:#f8f8f8">Poin</th>
-												<th class="px-4 py-2" style="background-color:#f8f8f8">Opsi</th>
+												<th class="text-center w-24 py-2 bg-gray-200" style="background-color:#f8f8f8">No</th>
+												<th class="text-center w-24 py-2" style="background-color:#f8f8f8">Tanggal</th>
+												<th class="text-center w-24 py-2" style="background-color:#f8f8f8">Kategori</th>
+												<th class="text-center w-24 py-2" style="background-color:#f8f8f8">Nama Pelanggaran</th>
+												<th class="text-center w-24 py-2" style="background-color:#f8f8f8">Poin</th>
+												<th class="text-center w-24 py-2" style="background-color:#f8f8f8">Opsi</th>
 											</tr>
 										</thead>
-										<tbody class="text-sm font-normal text-gray-700">
-											@if (count($detail_pelanggaran) > 0)
-											@foreach ($detail_pelanggaran as $item)
-											<tr class="py-10 border-b border-gray-200 hover:bg-gray-100">
-												<td class="px-4 py-4">{{ $loop->iteration }}</td>
-												<td class="px-4 py-4">{{ $item->updated_at}}</td>
-												<td class="px-4 py-4">{{ $item->kategori }}</td>
-												<td class="px-4 py-4">{{ $item->nama_pelanggaran }}</td>
-												<td class="px-4 py-4">{{ $item->poin }}</td>
-												<td class="px-4 py-4">
-													<a href="/dashboard/informasi/hapus/{{ $item->id }}">
-														<button type="button" class="p-1 m-2 w-20 font-semibold text-white bg-red-400 rounded-full shadow-lg transition-all duration-300 hover:bg-red-600 focus:outline-none focus:ring hover:shadow-none" @click="showModal1 = true"> Hapus </button>
-													</a>
-												</td>
-											</tr>
-											@endforeach
-											@else
-											<tr class="py-10 border-b border-gray-200 hover:bg-gray-100">
-												<td colspan="11" class="px-4 py-4 text-center">Data Detail Pelanggaran Kosong!</td>
-											</tr>
-											@endif
-										</tbody>
 									</table>
-									</div>
-								</div>
-								<div id="pagination" class="flex justify-center items-center w-full pt-4 border-t border-gray-100">
-									{{ $detail_pelanggaran->onEachSide(5)->links() }}
+                                </div>
+                                <iframe src="{{ url('/dashboard/tabel/info/'.$nis2) }}" style="height:250px;width:100%; border:none;" title="Iframe Example"></iframe>
 								</div>
 							</div>
 						</div>

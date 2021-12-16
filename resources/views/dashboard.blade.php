@@ -14,76 +14,86 @@
 
         <div  x-show="activeTab===0" class="overflow-hidden bg-white shadow-sm sm:rounded-lg">
             <div class="w-full p-6 bg-white border-b border-gray-200">
-                <div class="w-full px-4 pb-4 bg-white rounded-md">
-                    <div class="flex justify-end w-full px-2 mt-2">
-                        <div class="relative inline-block w-full sm:w-64">
-                            <div class="flex justify-between">
-                                <input type="" name="" class="block w-full px-4 py-1 pl-8 text-sm leading-snug text-gray-600 bg-gray-100 border border-gray-300 rounded-lg appearance-none" placeholder="Search" />
-                                <div class="absolute inset-y-0 left-0 flex items-center px-2 pl-3 text-gray-300 pointer-events-none">
-                                <svg class="w-3 h-3 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 511.999 511.999">
-                                    <path d="M508.874 478.708L360.142 329.976c28.21-34.827 45.191-79.103 45.191-127.309C405.333 90.917 314.416 0 202.666 0S0 90.917 0 202.667s90.917 202.667 202.667 202.667c48.206 0 92.482-16.982 127.309-45.191l148.732 148.732c4.167 4.165 10.919 4.165 15.086 0l15.081-15.082c4.165-4.166 4.165-10.92-.001-15.085zM202.667 362.667c-88.229 0-160-71.771-160-160s71.771-160 160-160 160 71.771 160 160-71.771 160-160 160z" />
-                                </svg>
-                            </div>
-                        </div>
-                    </div>
+                <div class="w-full mt-6 overflow-x-auto">
+                    <button onclick="openModal('main-modal')" class='w-40 p-1 m-2 font-semibold text-white transition-all duration-300 bg-green-400 rounded-full shadow-lg hover:bg-green-600 focus:outline-none focus:ring hover:shadow-none'>Tambah Data</button>
                 </div>
-                    <div class="w-full mt-6 overflow-x-auto">
-                        <div class="space-y-10 md:space-x-2 md:space-y-0">
-                            <button onclick="openModal('main-modal')" class='w-40 p-1 m-2 font-semibold text-white transition-all duration-300 bg-green-400 rounded-full shadow-lg hover:bg-green-600 focus:outline-none focus:ring hover:shadow-none'>Tambah Data</button>
-                        </div>
+                <table class="w-full border-collapse table-auto">
+                    <thead>
+                        <tr class="text-sm font-medium text-left text-gray-700 rounded-lg" style="font-size: 0.9674rem">
+                            <th class="text-center w-28 py-2 bg-gray-200" style="background-color:#f8f8f8">No</th>
+                            <th class="text-center w-28 py-2" style="background-color:#f8f8f8">NIS</th>
+                            <th class="text-center w-28 py-2" style="background-color:#f8f8f8">Nama Siswa</th>
+                            <th class="text-center w-28 py-2" style="background-color:#f8f8f8">Kelas</th>
+                            <th class="text-center w-28 py-2" style="background-color:#f8f8f8">Angkatan</th>
+                            <th class="text-center w-28 py-2" style="background-color:#f8f8f8">Tgl Lahir</th>
+                            <th class="text-center w-28 py-2" style="background-color:#f8f8f8">Jenis Kelamin</th>
+                            <th class="text-center w-28 py-2" style="background-color:#f8f8f8">Alamat</th>
+                            <th class="text-center w-28 py-2" style="background-color:#f8f8f8">Nama Wali</th>
+                            <th class="text-center w-28 py-2" style="background-color:#f8f8f8">No Tlp</th>
+                            <th class="text-center w-28 py-2" style="background-color:#f8f8f8">Opsi</th>
+                        </tr>
+                    </thead>
+                </table>
+                <iframe src="{{ url('/dashboard/tabel/siswa') }}" style="height:250px;width:100%; border:none;" title="Iframe Example"></iframe>
+            </div>
+            <style>
+                thead tr th:first-child { border-top-left-radius: 10px; border-bottom-left-radius: 10px;}
+                thead tr th:last-child { border-top-right-radius: 10px; border-bottom-right-radius: 10px;}
+                tbody tr td:first-child { border-top-left-radius: 5px; border-bottom-left-radius: 0px;}
+                tbody tr td:last-child { border-top-right-radius: 5px; border-bottom-right-radius: 0px;}
+            </style>
+            <br>
+        </div>
 
-                        <table class="w-full border-collapse table-auto">
-                        <thead>
-                            <tr class="text-sm font-medium text-left text-gray-700 rounded-lg" style="font-size: 0.9674rem">
-                                <th class="px-4 py-2 bg-gray-200" style="background-color:#f8f8f8">No</th>
-                                <th class="px-4 py-2" style="background-color:#f8f8f8">NIS</th>
-                                <th class="px-4 py-2" style="background-color:#f8f8f8">Nama Siswa</th>
-                                <th class="px-4 py-2" style="background-color:#f8f8f8">Kelas</th>
-                                <th class="px-4 py-2" style="background-color:#f8f8f8">Angkatan</th>
-                                <th class="px-4 py-2" style="background-color:#f8f8f8">Tgl Lahir</th>
-                                <th class="px-4 py-2" style="background-color:#f8f8f8">Jenis Kelamin</th>
-                                <th class="px-4 py-2" style="background-color:#f8f8f8">Alamat</th>
-                                <th class="px-4 py-2" style="background-color:#f8f8f8">Nama Wali</th>
-                                <th class="px-4 py-2" style="background-color:#f8f8f8">No Tlp</th>
-                                <th class="px-4 py-2" style="background-color:#f8f8f8">Opsi</th>
-                            </tr>
-                        </thead>
-                        <tbody class="text-sm font-normal text-gray-700">
-                            @if (count($siswas) > 0)
-                            @foreach ($siswas as $item)
-                            <tr class="py-10 border-b border-gray-200 hover:bg-gray-100">
-                                <td class="px-4 py-4">{{ $loop->iteration }}</td>
-                                <td class="px-4 py-4">{{ $item->nis }}</td>
-                                <td class="px-4 py-4">{{ $item->nama_siswa }}</td>
-                                <td class="px-4 py-4">{{ $item->kelas }}</td>
-                                <td class="px-4 py-4">{{ $item->angkatan }}</td>
-                                <td class="px-4 py-4">{{ $item->tgl_lahir }}</td>
-                                <td class="px-4 py-4">{{ $item->jenis_kelamin }}</td>
-                                <td class="px-4 py-4">{{ $item->alamat }}</td>
-                                <td class="px-4 py-4">{{ $item->nama_wali }}</td>
-                                <td class="px-4 py-4">{{ $item->telp_wali }}</td>
-                                <td class="px-4 py-4">
-                                    <div class="space-y-10 md:space-x-2 md:space-y-0">
-								<a href="/dashboard/ubah/siswa/{{ $item->nis }}">
-									<button type="button" class='w-20 p-1 m-2 font-semibold text-white transition-all duration-300 bg-yellow-400 rounded-full shadow-lg hover:bg-yellow-600 focus:outline-none focus:ring hover:shadow-none'>
-										Ubah
-									</button>
-								</a>
-                                    </div>
-                                </td>
-                            </tr>
-                            @endforeach
-                            @else
-                                <tr class="py-10 border-b border-gray-200 hover:bg-gray-100">
-                                    <td colspan="11" class="px-4 py-4 text-center">Data Siswa Kosong!</td>
-                                </tr>
-                            @endif
-                        </tbody>
-                    </table>
+        {{-- Tab Data Pelanggaran --}}
+        <div  x-show="activeTab===1" class="overflow-hidden bg-white shadow-sm sm:rounded-lg">
+            <div class="w-full p-6 bg-white border-b border-gray-200">
+                <div class="w-full mt-6 overflow-x-auto">
+                    <button onclick="openModal('pelanggaran-sms')" class='w-40 p-1 m-2 font-semibold text-white transition-all duration-300 bg-blue-400 rounded-full shadow-lg hover:bg-green-600 focus:outline-none focus:ring hover:shadow-none'>SMS</button>
                 </div>
-                <div id="pagination" class="flex items-center justify-center w-full pt-4 border-t border-gray-100">
-                    {{ $siswas->onEachSide(5)->links() }}
-                </div>
+                <table class="w-full border-collapse table-auto">
+                    <thead>
+                        <tr class="pl-10 text-sm font-medium text-left text-gray-700 rounded-lg" style="font-size: 0.9674rem">
+                            <th class="text-center w-40 py-2 bg-gray-200" style="background-color:#f8f8f8">No</th>
+                            <th class="text-center w-40 py-2" style="background-color:#f8f8f8">NIS</th>
+                            <th class="text-center w-40 py-2" style="background-color:#f8f8f8">Nama Siswa</th>
+                            <th class="text-center w-40 py-2" style="background-color:#f8f8f8">Kelas</th>
+                            <th class="text-center w-40 py-2" style="background-color:#f8f8f8">Angkatan</th>
+                            <th class="text-center w-40 py-2" style="background-color:#f8f8f8">Total Poin</th>
+                            <th class="text-center w-40 py-2" style="background-color:#f8f8f8">Tanggal Pelanggaran</th>
+                            <th class="text-center w-40 py-2" style="background-color:#f8f8f8">Opsi</th>
+                        </tr>
+                    </thead>
+                </table>
+                <iframe src="{{ url('/dashboard/tabel/pelanggaran') }}" style="height:300px;width:100%; border:none;" title="Iframe Example"></iframe>
+            </div>
+            <style>
+                thead tr th:first-child { border-top-left-radius: 10px; border-bottom-left-radius: 10px;}
+                thead tr th:last-child { border-top-right-radius: 10px; border-bottom-right-radius: 10px;}
+                tbody tr td:first-child { border-top-left-radius: 5px; border-bottom-left-radius: 0px;}
+                tbody tr td:last-child { border-top-right-radius: 5px; border-bottom-right-radius: 0px;}
+            </style>
+            <br>
+        </div>
+
+        {{-- Jenis Pelanggaran --}}
+	    <div  x-show="activeTab===2">
+	        <div class="w-full p-6 bg-white border-b border-gray-200">
+	            <div class="w-full mt-6 overflow-x-auto">
+	                    <button onclick="openModal('jenis-tambah')" class='w-40 p-1 m-2 font-semibold text-white transition-all duration-300 bg-green-400 rounded-full shadow-lg hover:bg-green-600 focus:outline-none focus:ring hover:shadow-none'>Tambah Data</button>
+	            </div>
+	            <table class="w-full border-collapse table-auto">
+                    <thead>
+                        <tr class="text-sm font-medium text-left text-gray-700 rounded-lg" style="font-size: 0.9674rem">
+                            <th class="text-center w-52 py-2 bg-gray-200" style="background-color:#f8f8f8">No</th>
+                            <th class="text-center w-52 py-2" style="background-color:#f8f8f8">Nama Pelanggaran</th>
+                            <th class="text-center w-52 py-2" style="background-color:#f8f8f8">Kategori</th>
+                            <th class="text-center w-52 py-2" style="background-color:#f8f8f8">Poin</th>
+                            <th class="text-center w-52 py-2" style="background-color:#f8f8f8">Opsi</th>
+                        </tr>
+                    </thead>
+                </table>
+                <iframe src="{{ url('/dashboard/tabel/jenis') }}" style="height:250px;width:100%; border:none;" title="Iframe Example"></iframe>
             </div>
             <style>
                 thead tr th:first-child { border-top-left-radius: 10px; border-bottom-left-radius: 10px;}
@@ -94,156 +104,6 @@
             <br>
         </div>
     </div>
-
-    {{-- Tab Data Pelanggaran --}}
-    <div  x-show="activeTab===1" class="overflow-hidden bg-white shadow-sm sm:rounded-lg">
-        <div class="w-full p-6 bg-white border-b border-gray-200">
-            <div class="w-full px-4 pb-4 bg-white rounded-md">
-                <div class="flex justify-end w-full px-2 mt-2">
-                    <div class="relative inline-block w-full sm:w-64">
-                        <input type="" name="" class="block w-full px-4 py-1 pl-8 text-sm leading-snug text-gray-600 bg-gray-100 border border-gray-300 rounded-lg appearance-none" placeholder="Search" />
-                        <div class="absolute inset-y-0 left-0 flex items-center px-2 pl-3 text-gray-300 pointer-events-none">
-                            <svg class="w-3 h-3 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 511.999 511.999">
-                            <path d="M508.874 478.708L360.142 329.976c28.21-34.827 45.191-79.103 45.191-127.309C405.333 90.917 314.416 0 202.666 0S0 90.917 0 202.667s90.917 202.667 202.667 202.667c48.206 0 92.482-16.982 127.309-45.191l148.732 148.732c4.167 4.165 10.919 4.165 15.086 0l15.081-15.082c4.165-4.166 4.165-10.92-.001-15.085zM202.667 362.667c-88.229 0-160-71.771-160-160s71.771-160 160-160 160 71.771 160 160-71.771 160-160 160z" />
-                            </svg>
-                        </div>
-                    </div>
-                </div>
-                <div class="w-full mt-6 overflow-x-auto">
-                    <div class="space-y-10 md:space-x-2 md:space-y-0">
-                        <button onclick="openModal('pelanggaran-sms')" class='w-40 p-1 m-2 font-semibold text-white transition-all duration-300 bg-blue-400 rounded-full shadow-lg hover:bg-green-600 focus:outline-none focus:ring hover:shadow-none'>SMS</button>
-                    </div>
-                    <table class="w-full border-collapse table-auto">
-                        <thead>
-                            <tr class="text-sm font-medium text-left text-gray-700 rounded-lg" style="font-size: 0.9674rem">
-                                <th class="px-4 py-2 bg-gray-200" style="background-color:#f8f8f8">No</th>
-                                <th class="px-4 py-2" style="background-color:#f8f8f8">NIS</th>
-                                <th class="px-4 py-2" style="background-color:#f8f8f8">Nama Siswa</th>
-                                <th class="px-4 py-2" style="background-color:#f8f8f8">Kelas</th>
-                                <th class="px-4 py-2" style="background-color:#f8f8f8">Angkatan</th>
-                                <th class="px-4 py-2" style="background-color:#f8f8f8">Total Poin</th>
-						  <th class="px-4 py-2" style="background-color:#f8f8f8">Tanggal Pelanggaran</th>
-                                <th class="px-4 py-2" style="background-color:#f8f8f8">Opsi</th>
-                            </tr>
-                        </thead>
-                        <tbody class="text-sm font-normal text-gray-700">
-					    @if (count($pelanggarans) > 0)
-					    @foreach ($pelanggarans as $item)
-                            	<tr class="py-10 border-b border-gray-200 hover:bg-gray-100">
-                                <td class="px-4 py-4">{{ $loop->iteration }}</td>
-                                <td class="px-4 py-4">{{ $item->nis }}</td>
-                                <td class="px-4 py-4">{{ $item->nama_siswa }}</td>
-                                <td class="px-4 py-4">{{ $item->kelas }}</td>
-                                <td class="px-4 py-4">{{ $item->angkatan }}</td>
-                                <td class="px-4 py-4">{{ $item->total_poin }}</td>
-						  <td class="px-4 py-4">{{ $item->updated_at }}</td>
-                                <td class="px-4 py-4">
-                                    <div class="space-y-10 md:space-x-2 md:space-y-2">
-								<a href="/dashboard/tambah/pelanggaran/{{ $item->nis }}">
-                                        	<button type="button" class='w-full p-1 m-2 font-semibold text-white transition-all duration-300 bg-green-400 rounded-full shadow-lg hover:bg-green-600 focus:outline-none focus:ring hover:shadow-none'>Pelanggaran</button>
-								</a>
-								<a href="/dashboard/informasi/{{ $item->nis }}">
-                                        	<button class="w-full p-1 m-1 font-semibold text-white transition-all duration-300 bg-yellow-400 rounded-full shadow-lg hover:bg-yellow-600 focus:outline-none focus:ring hover:shadow-none">Info</button>
-								</a>
-                                    </div>
-                                </td>
-                            	</tr>
-						@endforeach
-						@else
-							<tr class="py-10 border-b border-gray-200 hover:bg-gray-100">
-							    <td colspan="11" class="px-4 py-4 text-center">Data Pelanggaran Kosong!</td>
-							</tr>
-						@endif
-                        </tbody>
-                    </table>
-                </div>
-                <div id="pagination" class="flex items-center justify-center w-full pt-4 border-t border-gray-100">
-				{{ $pelanggarans->onEachSide(5)->links() }}
-            	</div>
-        </div>
-        <style>
-            thead tr th:first-child { border-top-left-radius: 10px; border-bottom-left-radius: 10px;}
-            thead tr th:last-child { border-top-right-radius: 10px; border-bottom-right-radius: 10px;}
-            tbody tr td:first-child { border-top-left-radius: 5px; border-bottom-left-radius: 0px;}
-            tbody tr td:last-child { border-top-right-radius: 5px; border-bottom-right-radius: 0px;}
-        </style>
-        <br>
-    </div>
-</div>
-
-{{-- Jenis Pelanggaran --}}
-	<div  x-show="activeTab===2">
-	    <div class="w-full p-6 bg-white border-b border-gray-200">
-	        <div class="w-full px-4 pb-4 bg-white rounded-md">
-
-	        <div class="flex justify-end w-full px-2 mt-2">
-
-	            <div class="relative inline-block w-full sm:w-64">
-	                <input type="" name="" class="block w-full px-4 py-1 pl-8 text-sm leading-snug text-gray-600 bg-gray-100 border border-gray-300 rounded-lg appearance-none" placeholder="Search" />
-	                <div class="absolute inset-y-0 left-0 flex items-center px-2 pl-3 text-gray-300 pointer-events-none">
-
-	                <svg class="w-3 h-3 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 511.999 511.999">
-	                    <path d="M508.874 478.708L360.142 329.976c28.21-34.827 45.191-79.103 45.191-127.309C405.333 90.917 314.416 0 202.666 0S0 90.917 0 202.667s90.917 202.667 202.667 202.667c48.206 0 92.482-16.982 127.309-45.191l148.732 148.732c4.167 4.165 10.919 4.165 15.086 0l15.081-15.082c4.165-4.166 4.165-10.92-.001-15.085zM202.667 362.667c-88.229 0-160-71.771-160-160s71.771-160 160-160 160 71.771 160 160-71.771 160-160 160z" />
-	                </svg>
-	                </div>
-	                <div></div>
-	            </div>
-	            </div>
-	            <div class="w-full mt-6 overflow-x-auto">
-	                <div class="space-y-10 md:space-x-2 md:space-y-0">
-	                    <button onclick="openModal('jenis-tambah')" class='w-40 p-1 m-2 font-semibold text-white transition-all duration-300 bg-green-400 rounded-full shadow-lg hover:bg-green-600 focus:outline-none focus:ring hover:shadow-none'>Tambah Data</button>
-	                </div>
-	            <table class="w-full border-collapse table-auto">
-	            <thead>
-	                <tr class="text-sm font-medium text-left text-gray-700 rounded-lg" style="font-size: 0.9674rem">
-	                <th class="px-4 py-2 bg-gray-200" style="background-color:#f8f8f8">No</th>
-				 <th class="px-4 py-2" style="background-color:#f8f8f8">Nama Pelanggaran</th>
-				 <th class="px-4 py-2" style="background-color:#f8f8f8">Kategori</th>
-				 <th class="px-4 py-2" style="background-color:#f8f8f8">Poin</th>
-	                <th class="px-4 py-2" style="background-color:#f8f8f8">Opsi</th>
-	            </tr>
-	            </thead>
-	            <tbody class="text-sm font-normal text-gray-700">
-				 @if (count($jenis_pelanggarans) > 0)
-				 @foreach ($jenis_pelanggarans as $item)
-	                <tr class="py-10 border-b border-gray-200 hover:bg-gray-100">
-		                <td class="px-4 py-4">{{ $loop->iteration }}</td>
-		                <td class="px-4 py-4">{{ $item->nama_pelanggaran}}</td>
-					 <td class="px-4 py-4">{{ $item->kategori }}</td>
-		                <td class="px-4 py-4">{{ $item->poin }}</td>
-		                <td class="px-4 py-4">
-		                    <div class="space-y-10 md:space-x-2 md:space-y-0">
-							<a href="/dashboard/ubah/jenis_pelanggaran/{{ $item->id }}">
-						     	<button type="button" class="w-20 p-1 m-2 font-semibold text-white transition-all duration-300 bg-yellow-400 rounded-full shadow-lg hover:bg-yellow-600 focus:outline-none focus:ring hover:shadow-none">Ubah</button>
-					    		</a>
-		                	</div>
-		                </td>
-	                </tr>
-				 @endforeach
-				 @else
-					 <tr class="py-10 border-b border-gray-200 hover:bg-gray-100">
-						<td colspan="11" class="px-4 py-4 text-center">Data Jenis Pelanggaran Kosong!</td>
-					 </tr>
-				 @endif
-	            </tbody>
-	            </table>
-	        </div>
-	          <div id="pagination" class="flex items-center justify-center w-full pt-4 border-t border-gray-100">
-				{{ $jenis_pelanggarans->onEachSide(5)->links()}}
-			</div>
-	     </div>
-	    <style>
-		    thead tr th:first-child { border-top-left-radius: 10px; border-bottom-left-radius: 10px;}
-		    thead tr th:last-child { border-top-right-radius: 10px; border-bottom-right-radius: 10px;}
-		    tbody tr td:first-child { border-top-left-radius: 5px; border-bottom-left-radius: 0px;}
-		    tbody tr td:last-child { border-top-right-radius: 5px; border-bottom-right-radius: 0px;}
-	    </style>
-     <br>
-	</div>
-	</div>
-     </div>
-   	<!--actual component end-->
-   </div>
 </div>
 
 {{-- modal tambah data siswa --}}
@@ -460,163 +320,80 @@
 @elseif (Auth::user()->status == 'Kepala Sekolah')
 <div class="py-12">
     <div class="flex justify-center h-screen">
-	<!--actual component start-->
-	<div x-data="setup()">
-		<ul class="flex items-center justify-center my-4">
-			<template x-for="(tab, index) in tabs" :key="index">
-				<li class="px-4 py-2 text-gray-500 border-b-8 cursor-pointer"
-					:class="activeTab===index ? 'text-green-500 border-green-500' : ''" @click="activeTab = index"
-					x-text="tab"></li>
-			</template>
-		</ul>
+	    <div x-data="setup()">
+            <ul class="flex items-center justify-center my-4">
+                <template x-for="(tab, index) in tabs" :key="index">
+                    <li class="px-4 py-2 text-gray-500 border-b-8 cursor-pointer"
+                        :class="activeTab===index ? 'text-green-500 border-green-500' : ''" @click="activeTab = index"
+                        x-text="tab"></li>
+                </template>
+            </ul>
 
-        {{-- Tab Data Siswa --}}
-        <div  x-show="activeTab===0" class="overflow-hidden bg-white shadow-sm sm:rounded-lg">
-            <div class="w-full p-6 bg-white border-b border-gray-200">
-                <div class="w-full px-4 pb-4 bg-white rounded-md">
-                    <div class="flex justify-end w-full px-2 mt-2">
-                        <div class="relative inline-block w-full sm:w-64">
-                            <input type="" name="" class="block w-full px-4 py-1 pl-8 text-sm leading-snug text-gray-600 bg-gray-100 border border-gray-300 rounded-lg appearance-none" placeholder="Search" />
-                            <div class="absolute inset-y-0 left-0 flex items-center px-2 pl-3 text-gray-300 pointer-events-none">
-                                <svg class="w-3 h-3 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 511.999 511.999">
-                                    <path d="M508.874 478.708L360.142 329.976c28.21-34.827 45.191-79.103 45.191-127.309C405.333 90.917 314.416 0 202.666 0S0 90.917 0 202.667s90.917 202.667 202.667 202.667c48.206 0 92.482-16.982 127.309-45.191l148.732 148.732c4.167 4.165 10.919 4.165 15.086 0l15.081-15.082c4.165-4.166 4.165-10.92-.001-15.085zM202.667 362.667c-88.229 0-160-71.771-160-160s71.771-160 160-160 160 71.771 160 160-71.771 160-160 160z" />
-                                </svg>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="w-full mt-6 overflow-x-auto">
+            {{-- Tab Data Siswa --}}
+            <div  x-show="activeTab===0" class="overflow-hidden bg-white shadow-sm sm:rounded-lg">
+                <div class="w-full p-6 bg-white border-b border-gray-200">
+                    <div class="w-full mt-6 overflow-x-auto"></div>
                     <table class="w-full border-collapse table-auto">
                         <thead>
                             <tr class="text-sm font-medium text-left text-gray-700 rounded-lg" style="font-size: 0.9674rem">
-                                <th class="px-4 py-2 bg-gray-200" style="background-color:#f8f8f8">No</th>
-                                <th class="px-4 py-2" style="background-color:#f8f8f8">NIS</th>
-                                <th class="px-4 py-2" style="background-color:#f8f8f8">Nama Siswa</th>
-                                <th class="px-4 py-2" style="background-color:#f8f8f8">Kelas</th>
-                                <th class="px-4 py-2" style="background-color:#f8f8f8">Tahun Ajaran</th>
-                                <th class="px-4 py-2" style="background-color:#f8f8f8">Tgl Lahir</th>
-                                <th class="px-4 py-2" style="background-color:#f8f8f8">Jenis Kelamin</th>
-                                <th class="px-4 py-2" style="background-color:#f8f8f8">Alamat</th>
-                                <th class="px-4 py-2" style="background-color:#f8f8f8">Nama Wali</th>
-                                <th class="px-4 py-2" style="background-color:#f8f8f8">No Tlp</th>
-                                <th class="px-4 py-2" style="background-color:#f8f8f8">Opsi</th>
+                                <th class="text-center w-28 py-2 bg-gray-200" style="background-color:#f8f8f8">No</th>
+                                <th class="text-center w-28 py-2" style="background-color:#f8f8f8">NIS</th>
+                                <th class="text-center w-28 py-2" style="background-color:#f8f8f8">Nama Siswa</th>
+                                <th class="text-center w-28 py-2" style="background-color:#f8f8f8">Kelas</th>
+                                <th class="text-center w-28 py-2" style="background-color:#f8f8f8">Angkatan</th>
+                                <th class="text-center w-28 py-2" style="background-color:#f8f8f8">Tgl Lahir</th>
+                                <th class="text-center w-28 py-2" style="background-color:#f8f8f8">Jenis Kelamin</th>
+                                <th class="text-center w-28 py-2" style="background-color:#f8f8f8">Alamat</th>
+                                <th class="text-center w-28 py-2" style="background-color:#f8f8f8">Nama Wali</th>
+                                <th class="text-center w-28 py-2" style="background-color:#f8f8f8">No Tlp</th>
+                                @if (Auth::user()->status == 'Wakil Kepala Sekolah')
+                                    <th class="text-center w-28 py-2" style="background-color:#f8f8f8">Opsi</th>
+                                @endif
                             </tr>
                         </thead>
-                        <tbody class="text-sm font-normal text-gray-700">
-                        @if (count($siswas) > 0)
-					    @foreach ($siswas as $item)
-                            <tr class="py-10 border-b border-gray-200 hover:bg-gray-100">
-                                <td class="px-4 py-4">{{ $loop->iteration }}</td>
-                                <td class="px-4 py-4">{{ $item->nis }}</td>
-                                <td class="px-4 py-4">{{ $item->nama_siswa }}</td>
-                                <td class="px-4 py-4">{{ $item->kelas }}</td>
-                                <td class="px-4 py-4">{{ $item->angkatan }}</td>
-                                <td class="px-4 py-4">{{ $item->tgl_lahir }}</td>
-                                <td class="px-4 py-4">{{ $item->jenis_kelamin }}</td>
-                                <td class="px-4 py-4">{{ $item->alamat }}</td>
-                                <td class="px-4 py-4">{{ $item->nama_wali }}</td>
-                                <td class="px-4 py-4">{{ $item->telp_wali }}</td>
-                                <td class="px-4 py-4">
-                                    <div class="space-y-10 md:space-x-2 md:space-y-0">
-								<a href="/dashboard/informasi/{{ $item->nis }}">
-                                        	<button class="w-20 p-1 m-2 font-semibold text-white transition-all duration-300 bg-green-400 rounded-full shadow-lg hover:bg-green-600 focus:outline-none focus:ring hover:shadow-none" @click="showModal1 = true"> Info </button>
-								</a>
-                                    </div>
-                                </td>
-                            </tr>
-					    @endforeach
-                        @else
-                            <tr class="py-10 border-b border-gray-200 hover:bg-gray-100">
-                                <td colspan="11" class="px-4 py-4 text-center">Data Siswa Kosong!</td>
-                            </tr>
-                        @endif
-                        </tbody>
                     </table>
+                    <iframe src="{{ url('/dashboard/tabel/siswa') }}" style="height:250px;width:100%; border:none;" title="Iframe Example"></iframe>
                 </div>
-                <div id="pagination" class="flex items-center justify-center w-full pt-4 border-t border-gray-100">
-                    {{ $siswas->onEachSide(5)->links() }}
-                </div>
+                <style>
+                    thead tr th:first-child { border-top-left-radius: 10px; border-bottom-left-radius: 10px;}
+                    thead tr th:last-child { border-top-right-radius: 10px; border-bottom-right-radius: 10px;}
+                    tbody tr td:first-child { border-top-left-radius: 5px; border-bottom-left-radius: 0px;}
+                    tbody tr td:last-child { border-top-right-radius: 5px; border-bottom-right-radius: 0px;}
+                </style>
+                <br>
             </div>
-            <style>
-                thead tr th:first-child { border-top-left-radius: 10px; border-bottom-left-radius: 10px;}
-                thead tr th:last-child { border-top-right-radius: 10px; border-bottom-right-radius: 10px;}
-                tbody tr td:first-child { border-top-left-radius: 5px; border-bottom-left-radius: 0px;}
-                tbody tr td:last-child { border-top-right-radius: 5px; border-bottom-right-radius: 0px;}
-            </style>
-            <br>
-        </div>
-    </div>
-    {{-- Tab Data Pelanggaran --}}
-    <div  x-show="activeTab===1" class="overflow-hidden bg-white shadow-sm sm:rounded-lg">
-        <div class="w-full p-6 bg-white border-b border-gray-200">
-            <div class="w-full px-4 pb-4 bg-white rounded-md">
-                <div class="flex justify-end w-full px-2 mt-2">
-                    <div class="relative inline-block w-full sm:w-64">
-                        <input type="" name="" class="block w-full px-4 py-1 pl-8 text-sm leading-snug text-gray-600 bg-gray-100 border border-gray-300 rounded-lg appearance-none" placeholder="Search" />
-                        <div class="absolute inset-y-0 left-0 flex items-center px-2 pl-3 text-gray-300 pointer-events-none">
-                            <svg class="w-3 h-3 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 511.999 511.999">
-                                <path d="M508.874 478.708L360.142 329.976c28.21-34.827 45.191-79.103 45.191-127.309C405.333 90.917 314.416 0 202.666 0S0 90.917 0 202.667s90.917 202.667 202.667 202.667c48.206 0 92.482-16.982 127.309-45.191l148.732 148.732c4.167 4.165 10.919 4.165 15.086 0l15.081-15.082c4.165-4.166 4.165-10.92-.001-15.085zM202.667 362.667c-88.229 0-160-71.771-160-160s71.771-160 160-160 160 71.771 160 160-71.771 160-160 160z" />
-                            </svg>
-                        </div>
-                    </div>
-                </div>
-                <div class="w-full mt-6 overflow-x-auto">
+
+            {{-- Tab Data Pelanggaran --}}
+            <div  x-show="activeTab===1" class="overflow-hidden bg-white shadow-sm sm:rounded-lg">
+                <div class="w-full p-6 bg-white border-b border-gray-200">
+                    <div class="w-full mt-6 overflow-x-auto"></div>
                     <table class="w-full border-collapse table-auto">
                         <thead>
-                            <tr class="text-sm font-medium text-left text-gray-700 rounded-lg" style="font-size: 0.9674rem">
-                                <th class="px-4 py-2 bg-gray-200" style="background-color:#f8f8f8">No</th>
-                                <th class="px-4 py-2" style="background-color:#f8f8f8">NIS</th>
-                                <th class="px-4 py-2" style="background-color:#f8f8f8">Nama Siswa</th>
-                                <th class="px-4 py-2" style="background-color:#f8f8f8">Kelas</th>
-                                <th class="px-4 py-2" style="background-color:#f8f8f8">Angkatan</th>
-                                <th class="px-4 py-2" style="background-color:#f8f8f8">Total Poin</th>
-						  <th class="px-4 py-2" style="background-color:#f8f8f8">Tanggal</th>
-                                <th class="px-4 py-2" style="background-color:#f8f8f8">Opsi</th>
+                            <tr class="pl-10 text-sm font-medium text-left text-gray-700 rounded-lg" style="font-size: 0.9674rem">
+                                <th class="text-center w-40 py-2 bg-gray-200" style="background-color:#f8f8f8">No</th>
+                                <th class="text-center w-40 py-2" style="background-color:#f8f8f8">NIS</th>
+                                <th class="text-center w-40 py-2" style="background-color:#f8f8f8">Nama Siswa</th>
+                                <th class="text-center w-40 py-2" style="background-color:#f8f8f8">Kelas</th>
+                                <th class="text-center w-40 py-2" style="background-color:#f8f8f8">Angkatan</th>
+                                <th class="text-center w-40 py-2" style="background-color:#f8f8f8">Total Poin</th>
+                                <th class="text-center w-40 py-2" style="background-color:#f8f8f8">Tanggal Pelanggaran</th>
+                                <th class="text-center w-28 py-2" style="background-color:#f8f8f8">Opsi</th>
                             </tr>
                         </thead>
-                        <tbody class="text-sm font-normal text-gray-700">
-					   @if (count($pelanggarans) > 0)
- 					   @foreach ($pelanggarans as $item)
-                            <tr class="py-10 border-b border-gray-200 hover:bg-gray-100">
-                                <td class="px-4 py-4">{{ $loop->iteration }}</td>
-                                <td class="px-4 py-4">{{ $item->nis }}</td>
-                                <td class="px-4 py-4">{{ $item->nama_siswa }}</td>
-                                <td class="px-4 py-4">{{ $item->kelas }}</td>
-                                <td class="px-4 py-4">{{ $item->angkatan }}</td>
-                                <td class="px-4 py-4">{{ $item->total_poin }}</td>
-						  <td class="px-4 py-4">{{ $item->updated_at }}</td>
-                                <td class="px-4 py-4">
-                                <div class="space-y-10 md:space-x-2 md:space-y-0">
-							 <a href="/dashboard/informasi/{{ $item->nis }}">
-                                    	<button type="button" class="w-20 p-1 m-2 font-semibold text-white transition-all duration-300 bg-green-400 rounded-full shadow-lg hover:bg-green-600 focus:outline-none focus:ring hover:shadow-none"> Info </button>
-						 	 </a>
-                                </div>
-                                </td>
-                            </tr>
-					   @endforeach
-					   @else
-						   <tr class="py-10 border-b border-gray-200 hover:bg-gray-100">
-							  <td colspan="11" class="px-4 py-4 text-center">Data Pelanggaran Kosong!</td>
-						   </tr>
-					   @endif
-                        </tbody>
                     </table>
+                    <iframe src="{{ url('/dashboard/tabel/pelanggaran') }}" style="height:300px;width:100%; border:none;" title="Iframe Example"></iframe>
                 </div>
-                <div id="pagination" class="flex items-center justify-center w-full pt-4 border-t border-gray-100">
-                    {{ $pelanggarans->onEachSide(5)->links() }}
-                </div>
-            </div>
-            <style>
-                thead tr th:first-child { border-top-left-radius: 10px; border-bottom-left-radius: 10px;}
-                thead tr th:last-child { border-top-right-radius: 10px; border-bottom-right-radius: 10px;}
+                <style>
+                    thead tr th:first-child { border-top-left-radius: 10px; border-bottom-left-radius: 10px;}
+                    thead tr th:last-child { border-top-right-radius: 10px; border-bottom-right-radius: 10px;}
 
-                tbody tr td:first-child { border-top-left-radius: 5px; border-bottom-left-radius: 0px;}
-                tbody tr td:last-child { border-top-right-radius: 5px; border-bottom-right-radius: 0px;}
-            </style>
-            <br>
+                    tbody tr td:first-child { border-top-left-radius: 5px; border-bottom-left-radius: 0px;}
+                    tbody tr td:last-child { border-top-right-radius: 5px; border-bottom-right-radius: 0px;}
+                </style>
+                <br>
+            </div>
         </div>
     </div>
-	<!--actual component end-->
-</div>
 </div>
 
 {{-- Tab Kepala Sekolah --}}

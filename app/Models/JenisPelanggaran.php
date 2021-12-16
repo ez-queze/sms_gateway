@@ -4,15 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Scout\Searchable;
 
 class JenisPelanggaran extends Model
 {
     use HasFactory;
-
-    protected $primaryKey = 'kode_pelanggaran';
+    use Searchable;
 
     protected $fillable = [
-        'kode_pelanggaran',
         'nama_pelanggaran',
         'poin',
         'kategori',

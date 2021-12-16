@@ -14,6 +14,7 @@ class CreatePelanggaransTable extends Migration
     public function up()
     {
         Schema::create('pelanggarans', function (Blueprint $table) {
+            $table->increments('id');
             $table->integer('nis')->index();
             $table->foreign('nis')->references('nis')->on('siswas')->onDelete('cascade');
             $table->string('nama_siswa');
